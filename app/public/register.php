@@ -1,7 +1,35 @@
-<?php 
+<?php
+    session_start();
     include_once "database.php";
-?>
 
+    // redirect user to index page if already logged in
+    // if (isset($_SESSION['user_id'])) {
+    //     header('location: index.php');
+    //     exit();
+    // }
+        
+    // handle form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $form_username = $_POST['username'];
+    $form_password = $_POST['password'];
+
+    $result = $pdo->query("SELECT * FROM user WHERE username = '$form_username'");
+    $user = $result->fetch();
+
+        if ($user) {
+            $_SESSION['message'] = "Username is already taken";
+            // header('location: register.php');
+            echo "<script>window.location.href='register.php';</script>";
+            exit();
+        } else {
+            $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
+            $pdo->query("INSERT INTO user (username, password) VALUES ('$form_username', '$hashed_password')");
+            $_SESSION['message'] = "Successfully created user! Please login.";
+            // header('location: login.php');
+            echo "<script>window.location.href='login.php';</script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +41,29 @@
 </head>
 <body>
     <?php include_once "./partials/logo.php" ?>
-    <?php include_once "./partials/whale.php" ?>
+        <div class="whaleContainer">
+        <p class="whaleMessage" id="whaleMessage">
+            Let's get you registred. Isn't this exciting? We're gonna be the bestest friends.
+            <?php
+            // Write out message from other pages if exists
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                echo '<span class="dynamicMessage">' . $_SESSION['message'] . '<span>';
+                unset( $_SESSION['message']); // remove it once it has been written
+            }
+            ?>
+        </p>
+        <p class="messageBubble"></p>
+        <div class="whaleImgContainer">
+            <img src="./cms-content/img/whale.png" alt="">
+        </div>
+    </div>
 
-    <form action="#">
+    <form method="post">
         <h2>Register</h2>
         <input type="text" name="username" id="username" placeholder="Username">
         <input type="password" name="password" id="password" placeholder="Password">
-        <input type="email" name="email" id="email" placeholder="Email">
 
-        <input type="submit" value="Register">
+        <input onclick="messageRegisterBtn()" type="submit" value="Register">
         <p class="formBottomLink">Already a user?<a href="login.php">Log In</a></p>
     </form>
     <script src="./cms-content/js/functions.js"></script>

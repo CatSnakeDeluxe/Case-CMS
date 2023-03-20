@@ -31,12 +31,22 @@ body {
     height: 100%;
 }
 
+/* DYNAMIC MESSAGE */
+.dynamicMessage {
+    border: 1px solid var(--darkBlue);
+    padding: 0.2rem;
+    display: block;
+    border-radius: 0.3rem;
+    margin-top: 0.6rem;
+    text-align: center;
+}
+
 /* WHALE AND WHALEMESSAGE */
 .whaleContainer {
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
     margin-bottom: 2rem;
 }
 
@@ -96,14 +106,22 @@ form input {
 form input[type=submit] {
     width: fit-content;
     margin: auto;
-    background: var(--darkBlue);
+    /* background: var(--darkBlue);
     color: var(--lightBlue);
-    border: none;
+    border: none; */
+    border: 2px solid var(--darkBlue);
+    background: var(--lightkBlue);
+    color: var(--darkBlue);
     padding: 0.6rem 1.4rem;
     border-radius: 0.4rem;
     cursor: pointer;
     font-weight: 600;
     margin-top: 1rem;
+}
+
+form input[type=submit]:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
 }
 
 form #username, #password, #email {
@@ -132,4 +150,73 @@ form #username, #password, #email {
 .formBottomLink a {
     margin-left: 0.4rem;
     color: var(--darkBlue);
+}
+
+/* DASHBOARD */
+
+.dashboardContainer {
+    display: flex;
+}
+
+.adminPanel {
+    background: var(--lightBlue);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100vh;
+    align-content: center;
+}
+
+.adminPanel h2 {
+    text-align: center;
+    font-weight: 400;
+    color: var(--darkBlue);
+}
+
+.createPageBtn {
+    align-self: center;
+    width: fit-content;
+    border: 2px solid var(--darkBlue);
+    background: var(--lightkBlue);
+    color: var(--darkBlue);
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 1rem;
+}
+
+.createPageBtn:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+.fa-plus {
+    color: var(--darkBlue);
+    margin-left: 0.8rem;
+}
+
+.logoutBtn {
+    align-self: center;
+    position: fixed;
+    bottom: 15px;
+    font-size: 0.75rem;
+    width: fit-content;
+    border: 2px solid var(--darkBlue);
+    background: var(--lightkBlue);
+    color: var(--darkBlue);
+    padding: 0.3rem 1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.logoutBtn:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+.dashboardContent {
+    flex: 2;
 }
