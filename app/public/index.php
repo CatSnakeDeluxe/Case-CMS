@@ -2,11 +2,11 @@
     include_once "database.php";
 
     // redirect user to index page if already logged in
-    if (!isset($_SESSION['user_id'])) {
-        echo "<script>window.location.href='login.php';</script>";
-        // header('location: login.php');
-        // exit();
-    }
+    // if (!isset($_SESSION['user_id'])) {
+    //     echo "<script>window.location.href='login.php';</script>";
+    //     // header('location: login.php');
+    //     exit();
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">

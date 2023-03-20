@@ -4,7 +4,8 @@
 
     // redirect user to index page if already logged in
     // if (isset($_SESSION['user_id'])) {
-    //     header('location: index.php');
+    //     echo "<script>window.location.href='index.php';</script>";
+    //     // header('location: index.php');
     //     exit();
     // }
         
@@ -18,15 +19,15 @@
 
         if ($user) {
             $_SESSION['message'] = "Username is already taken";
-            // header('location: register.php');
-            echo "<script>window.location.href='register.php';</script>";
+            header('location:register.php');
+            // echo "<script>window.location.href='register.php';</script>";
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
             $pdo->query("INSERT INTO user (username, password) VALUES ('$form_username', '$hashed_password')");
             $_SESSION['message'] = "Successfully created user! Please login.";
-            // header('location: login.php');
-            echo "<script>window.location.href='login.php';</script>";
+            header('location:login.php');
+            // echo "<script>window.location.href='login.php';</script>";
         }
     }
 ?>
