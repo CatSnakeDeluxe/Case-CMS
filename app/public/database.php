@@ -11,6 +11,35 @@ try {
     // if something goes wrong throw exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // check if the tables exist
+    $result = $pdo->query("SHOW TABLES LIKE 'user'");
+    $user_table_exists = $result->rowCount() == 1;
+
+    $result = $pdo->query("SHOW TABLES LIKE 'cms_page'");
+    $cms_page_table_exists = $result->rowCount() == 1;
+
+    // if the tables doesn't exist then create them
+    if (!$user_table_exists || !$cms_page_table_exists) {
+        // create the user table
+         $pdo->exec("CREATE TABLE IF NOT EXISTS user (
+             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+             username VARCHAR(50) NOT NULL,
+             email VARCHAR(50) NOT NULL,
+             password VARCHAR(255) NOT NULL
+         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+ 
+         // create the cms_page table
+         $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page (
+             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+             text VARCHAR(255) NOT NULL,
+             user_id INT(11) UNSIGNED NOT NULL,
+             CONSTRAINT `fk_user`
+                 FOREIGN KEY (user_id)
+                 REFERENCES user(id)
+                 ON DELETE CASCADE
+         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+    }
+
 } catch (PDOException $err) {
     // sned error message to user
     die("Error: Could not connect. " . $err->getMessage());

@@ -72,17 +72,6 @@ body {
     margin-left: -15px;
 }
 
-/* .whaleMessage::after {
-    content: '';
-    width: 40px;
-    height: 40px;
-    background: var(--lightBlue);
-    
-    position: relative;
-    left: 500px;
-} */
-
-
 /* FORM */
 form {
     background: var(--lightBlue);
@@ -123,10 +112,6 @@ form #username, #password, #email {
     outline: none;
     border: none;
     border-radius: 0.3rem;
-}
-
-#img {
-    margin-top: 1rem;
 }
 
 .forgotPassword {
