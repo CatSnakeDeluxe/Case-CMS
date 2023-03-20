@@ -200,16 +200,9 @@ form #username, #password, #email {
     align-self: center;
     position: fixed;
     bottom: 15px;
-    font-size: 0.75rem;
-    width: fit-content;
-    border: 2px solid var(--darkBlue);
-    background: var(--lightkBlue);
+    font-size: 1.5rem;
     color: var(--darkBlue);
-    padding: 0.3rem 1rem;
-    border-radius: 0.4rem;
     cursor: pointer;
-    font-weight: 600;
-    text-decoration: none;
 }
 
 .logoutBtn:hover {

@@ -1,5 +1,12 @@
 <?php 
     include_once "database.php";
+
+    // redirect user to index page if already logged in
+    if (!isset($_SESSION['user_id'])) {
+        echo "<script>window.location.href='login.php';</script>";
+        // header('location: login.php');
+        // exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +24,7 @@
             <?php include_once "./partials/logo.php" ?>
             <h2>Logged in user</h2>
             <button class="createPageBtn">Create page<i class="fa-solid fa-plus"></i></button>
-            <a href="logout.php" class="logoutBtn">Logout</a>
+            <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
         </div>
         <div class="dashboardContent">
             <div class="whaleContainer">
