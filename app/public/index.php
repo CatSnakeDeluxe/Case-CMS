@@ -1,4 +1,5 @@
-<?php 
+<?php
+    session_start();
     include_once "database.php";
 
     // redirect user to index page if already logged in

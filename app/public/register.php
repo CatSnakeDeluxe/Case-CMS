@@ -1,18 +1,18 @@
 <?php
     session_start();
     include_once "database.php";
-
-    // redirect user to index page if already logged in
-    // if (isset($_SESSION['user_id'])) {
-    //     echo "<script>window.location.href='index.php';</script>";
-    //     // header('location: index.php');
-    //     exit();
-    // }
         
     // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
+
+    if(!$form_username || !$form_password) {
+        $_SESSION['message'] = "All fields required.";
+        header('location: register.php');
+        exit();
+    }
 
     $result = $pdo->query("SELECT * FROM user WHERE username = '$form_username'");
     $user = $result->fetch();
