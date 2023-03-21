@@ -44,10 +44,3 @@
         die("Error: Could not connect. " . $err->getMessage());
     }
 ?>
-<!-- 
-LINODE
-$db_host = "localhost"; // usually: localhost
-$db_name = "cms";
-$db_user = "cms_user_linode";
-$db_password = "ZY3eDmRchz"; 
--->

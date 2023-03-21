@@ -19,15 +19,14 @@
 
         if ($user) {
             $_SESSION['message'] = "Username is already taken";
-            header('location:register.php');
-            // echo "<script>window.location.href='register.php';</script>";
+            header('location: register.php');
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
             $pdo->query("INSERT INTO user (username, password) VALUES ('$form_username', '$hashed_password')");
             $_SESSION['message'] = "Successfully created user! Please login.";
-            header('location:login.php');
-            // echo "<script>window.location.href='login.php';</script>";
+            header('location: login.php');
+            exit();
         }
     }
 ?>
@@ -49,7 +48,7 @@
             // Write out message from other pages if exists
             if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                 echo '<span class="dynamicMessage">' . $_SESSION['message'] . '<span>';
-                unset( $_SESSION['message']); // remove it once it has been written
+                unset( $_SESSION['message']);
             }
             ?>
         </p>

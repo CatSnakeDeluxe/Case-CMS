@@ -12,8 +12,7 @@
 
         if (!$user) {
             $_SESSION['message'] = "Username does not exists";
-            // header("location: login.php");
-            echo "<script>window.location.href='login.php';</script>";
+            header("location: login.php");
             exit();
         }
 
@@ -21,8 +20,7 @@
         $correct_password = password_verify($form_password, $user['password']);
         if (!$correct_password) {
             $_SESSION['message'] = "Invalid password";
-            // header("location: login.php");
-            echo "<script>window.location.href='login.php';</script>";
+            header("location: login.php");
             exit();
         }
 
@@ -31,8 +29,7 @@
         $_SESSION['message'] = "Successfully logged in";
 
         // redirect to dashboard
-        // header("location: index.php");
-        echo "<script>window.location.href='index.php';</script>";
+        header("location: index.php");
     }
 ?>
 <!DOCTYPE html>
@@ -53,7 +50,7 @@
             // Write out message from other pages if exists
             if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                 echo '<span class="dynamicMessage">' . $_SESSION['message'] . '<span>';
-                unset( $_SESSION['message']); // remove it once it has been written
+                unset( $_SESSION['message']);
             }
             ?>
         </p>
