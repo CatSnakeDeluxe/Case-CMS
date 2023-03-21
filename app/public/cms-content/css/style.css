@@ -50,6 +50,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.whaleContainerDashboard {
+    margin-top: 1rem;
+}
+
 .whaleImgContainer {
     width: 220px;
     height: 110px;
@@ -69,7 +73,6 @@ body {
     border-radius: 0.3rem;
     word-break: break-word;
     height: fit-content;
-    
 }
 
 .messageBubble {
@@ -150,6 +153,39 @@ form #username, #password, #email {
 .formBottomLink a {
     margin-left: 0.4rem;
     color: var(--darkBlue);
+}
+
+/* CREATE PAGE FORM */
+#formDashboardContainer {
+    display: none;
+}
+
+#createPageForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 30%;
+}
+
+#createPageForm p {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+}
+
+#createPageForm #pagetitle {
+    padding: 0.4rem;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+.fa-circle-xmark {
+    color: var(--darkBlue);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: auto;
 }
 
 /* DASHBOARD */

@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once "database.php";
-        
+
     // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

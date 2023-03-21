@@ -23,20 +23,30 @@
         <div class="adminPanel">
             <?php include_once "./partials/logo.php" ?>
             <h2><?= $_SESSION['username'] ?></h2>
-            <button class="createPageBtn">Create page<i class="fa-solid fa-plus"></i></button>
+            <button onclick="openCreatePageForm()" class="createPageBtn" id="createPageBtn">Create page<i class="fa-solid fa-plus"></i></button>
             <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
         </div>
         <div class="dashboardContent">
-            <div class="whaleContainer">
-            <p class="whaleMessage" id="whaleMessage">
-                We made it to the dashboard. Good Job! I'm such a proud whale right now.
-            </p>
-            <p class="messageBubble"></p>
-            <div class="whaleImgContainer">
-                <img src="./cms-content/img/whale.png" alt="">
+            <div class="whaleContainer whaleContainerDashboard">
+                <p class="whaleMessage" id="whaleMessage">
+                    We made it to the dashboard. Good Job! I'm such a proud whale right now.
+                </p>
+                <p class="messageBubble"></p>
+                <div class="whaleImgContainer">
+                    <img src="./cms-content/img/whale.png" alt="">
+                </div>
             </div>
+            <div id="formDashboardContainer">
+                <form method="post" id="createPageForm">
+                    <p>
+                        <input type="text" name="pagetitle" id="pagetitle" placeholder="Page Title">
+                        <i onclick="closeCreatePageForm()" class="fa-regular fa-circle-xmark"></i>
+                    </p>
+                    <input id="createPageFormSubmit" type="submit" value="Create Page">
+                </form>
             </div>
         </div>
     </div>
+    <script src="./cms-content/js/functions.js"></script>
 </body>
 </html>
