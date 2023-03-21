@@ -22,7 +22,7 @@
     <div class="dashboardContainer">
         <div class="adminPanel">
             <?php include_once "./partials/logo.php" ?>
-            <h2>Logged in user</h2>
+            <h2><?= $_SESSION['username'] ?></h2>
             <button class="createPageBtn">Create page<i class="fa-solid fa-plus"></i></button>
             <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
         </div>

@@ -28,6 +28,7 @@
 
         // set user_id for session
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
         $_SESSION['message'] = "Successfully logged in";
         // echo "success";
         // redirect to dashboard
