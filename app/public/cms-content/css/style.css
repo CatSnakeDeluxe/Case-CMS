@@ -155,39 +155,6 @@ form #username, #password, #email {
     color: var(--darkBlue);
 }
 
-/* CREATE PAGE FORM */
-#formDashboardContainer {
-    display: none;
-}
-
-#createPageForm {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    width: 30%;
-}
-
-#createPageForm p {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    width: 100%;
-}
-
-#createPageForm #pagetitle {
-    padding: 0.4rem;
-    outline: none;
-    border: none;
-    border-radius: 0.3rem;
-}
-
-.fa-circle-xmark {
-    color: var(--darkBlue);
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin: auto;
-}
-
 /* DASHBOARD */
 
 .dashboardContainer {
@@ -215,11 +182,12 @@ form #username, #password, #email {
     border: 1px solid var(--darkBlue);
     background: var(--lightkBlue);
     color: var(--darkBlue);
-    padding: 0.6rem 1.4rem;
+    padding: 0.4rem 1.3rem;
     border-radius: 0.4rem;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
     margin: 1rem;
+    text-decoration: none;
 }
 
 .createPageBtn:hover {
@@ -230,6 +198,11 @@ form #username, #password, #email {
 .fa-plus {
     color: var(--darkBlue);
     margin-left: 0.8rem;
+}
+
+.fa-arrow-left {
+    color: var(--darkBlue);
+    margin-right: 0.8rem;
 }
 
 .logoutBtn {
@@ -248,4 +221,52 @@ form #username, #password, #email {
 
 .dashboardContent {
     flex: 2;
+}
+
+/* CREATE PAGE */
+.createPageHeader {
+    display: flex;
+    justify-content: center;
+}
+
+.createPageHeader h2 {
+    color: var(--darkBlue);
+    font-weight: 400;
+    margin: 0.6rem;
+}
+
+.createPageHeader button {
+    border: 1px solid var(--darkBlue);
+    color: var(--darkBlue);
+    background: transparent;
+    font-weight: 600;
+    padding: 0.4rem 1.3rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0.6rem;
+}
+
+.createPageHeader button:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+#markdownOption {
+    display: none;
+}
+
+#editorOption {
+    display: none;
+}
+
+.optionTitle {
+    color: var(--darkBlue);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0.6rem;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
