@@ -223,6 +223,27 @@ form #username, #password, #email {
     flex: 2;
 }
 
+.dynamicPages {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.dynamicPages p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.dynamicPages a {
+    margin: 0 0.2rem;
+
+}
+
+.dynamicPages div {
+    display: flex;
+    justify-content: center;
+}
+
 /* CREATE PAGE */
 .createPageHeader {
     display: flex;

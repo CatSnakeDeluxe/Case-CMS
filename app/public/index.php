@@ -25,7 +25,26 @@
             <?php include_once "./partials/logo.php" ?>
             <h2><?= $_SESSION['username'] ?></h2>
             <a href="create.php" class="createPageBtn">Create new page<i class="fa-solid fa-plus"></i></a>
-            <!-- <button onclick="openCreatePageForm()" class="createPageBtn" id="createPageBtn">Create new page<i class="fa-solid fa-plus"></i></button> -->
+            <?php 
+            // query the database
+            $sqlquery = "SELECT * FROM cms_page";
+            $result = $pdo->query($sqlquery);
+            $Parsedown = new Parsedown();
+
+            // render the data
+            echo '<div class="dynamicPages">';
+            while($row = $result->fetch()) {
+                $id = $row['id'];
+                echo 
+                    "<p>" . $row['text'] . "</p>
+                    <div>
+                        <a href='view.php?id=$id'>View</a>
+                        <a href='edit.php?id=$id'>Edit</a>
+                        <a href='delete.php?id=$id'>Delete</a>
+                    </div>";
+            }
+            echo '</div>';
+            ?>
             <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
         </div>
         <div class="dashboardContent">
@@ -38,30 +57,7 @@
                     <img src="./cms-content/img/whale.png" alt="">
                 </div>
             </div>
-            <?php 
-        // Query the database
-        $sqlquery = "SELECT * FROM cms_page";
-        $result = $pdo->query($sqlquery);
-        $Parsedown = new Parsedown();
 
-
-        // Render the data
-        echo "<section>";
-        while($row = $result->fetch()) {
-            $id = $row['id'];
-            echo "<aside>
-                    <p>" . $row['text'] . "</p>
-                    <div>
-                        <a href='delete.php?id=$id'>Delete</a>
-                        <a href='edit.php?id=$id'>Edit</a>
-                        <a href='view.php?id=$id'>View</a>
-                    </div>
-                </aside>
-                <hr>";
-        }
-        echo "</section>";
-
-    ?>
         </div>
     </div>
     <script src="./cms-content/js/functions.js"></script>
