@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once "database.php";
+    include_once "parsedown.php";
 
     // redirect user to index page if already logged in
     if (!isset($_SESSION['user_id'])) {
@@ -37,6 +38,30 @@
                     <img src="./cms-content/img/whale.png" alt="">
                 </div>
             </div>
+            <?php 
+        // Query the database
+        $sqlquery = "SELECT * FROM cms_page";
+        $result = $pdo->query($sqlquery);
+        $Parsedown = new Parsedown();
+
+
+        // Render the data
+        echo "<section>";
+        while($row = $result->fetch()) {
+            $id = $row['id'];
+            echo "<aside>
+                    <p>" . $row['text'] . "</p>
+                    <div>
+                        <a href='delete.php?id=$id'>Delete</a>
+                        <a href='edit.php?id=$id'>Edit</a>
+                        <a href='view.php?id=$id'>View</a>
+                    </div>
+                </aside>
+                <hr>";
+        }
+        echo "</section>";
+
+    ?>
         </div>
     </div>
     <script src="./cms-content/js/functions.js"></script>
