@@ -17,7 +17,7 @@
         <a href="create.php" class="createPageBtn">Create new page<i class="fa-solid fa-plus"></i></a>
         <?php 
         // query the database
-        $sqlquery = "SELECT * FROM cms_page";
+        $sqlquery = "SELECT * FROM cms_page_markdown";
         $result = $pdo->query($sqlquery);
         $Parsedown = new Parsedown();
 
@@ -26,7 +26,7 @@
         while($row = $result->fetch()) {
             $id = $row['id'];
             echo 
-                "<p>" . $row['text'] . "</p>
+                "<p>" . $row['title'] . "</p>
                 <div>
                     <a href='view.php?id=$id'>View</a>
                     <a href='edit.php?id=$id'>Edit</a>

@@ -7,23 +7,32 @@
         exit();
     }
 
-    // Query the database
-    $sqlquery = "SELECT * FROM cms_page";
-    $result = $pdo->query($sqlquery);
+    // query the database
+    // $sqlquery = "SELECT * FROM cms_page_markdown";
+    // $result = $pdo->query($sqlquery);
 
-    // Handle form submission
+    // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $form_text = trim($_POST["text"]);
+        $form_title = trim($_POST["pagetitle"]);
+        $form_markdown = trim($_POST["pagemarkdown"]);
         $user_id = $_SESSION['user_id'];
 
-        // Check if there is any text from user
-        if (!empty($form_text)) {
-            // Prepare sql query to insert new journal entry
-            $pdo->query("INSERT INTO cms_page (text, user_id) VALUES ('$form_text', $user_id)");
-            $_SESSION['message'] = "Successfully added page";
+        // if(!$form_title) {
+        //     $_SESSION['message'] = "Title needed";
+        //     header("location: create.php");
+        //     exit();
+        // }
 
-            header("location: index.php");
-        }
+        // if(!$form_markdown) {
+        //     $_SESSION['message'] = "Content needed";
+        //     header("location: create.php");
+        //     exit();
+        // }
+
+        $pdo->query("INSERT INTO cms_page_markdown (title, pagemarkdown, user_id) VALUES ('$form_title', '$form_markdown', $user_id)");
+        $_SESSION['message'] = "Successfully added page";
+
+        header("location: index.php");
     }  
 ?>
 <?php include_once "./partials/head.php" ?>
@@ -37,14 +46,27 @@
     <div class="dashboardContent">
         <div class="createPageHeader">
             <h2>Create a new page</h2>
-            <button onclick="showEditor()">Editor</button>
-            <button onclick="showMarkdown()">Markdown</button>
+            <button class="btnOutline" onclick="showEditor()">Editor</button>
+            <button class="btnOutline" onclick="showMarkdown()">Markdown</button>
+        </div>
+        <div class="serverMessage">
+            <?php
+            // Write out message from other pages if exists
+
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                echo '<span class="dynamicMessage">' . $_SESSION['message'] . '<span>';
+                unset( $_SESSION['message']);
+            }
+            ?>
         </div>
         <div id="markdownOption">
             <h2 class="optionTitle">MARKDOWN</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <textarea name="text" id="text" cols="30" rows="10"></textarea>
-                <input type="submit" value="Create Page">
+            <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <h3>Page Title</h3>
+                <input type="text" name="pagetitle" id="pagetitle">
+                <h3>Page Content</h3>
+                <textarea name="pagemarkdown" id="pagemarkdown" cols="30" rows="18"></textarea>
+                <input class="btnOutline" type="submit" value="Create Page">
             </form>
         </div>
         <div id="editorOption">

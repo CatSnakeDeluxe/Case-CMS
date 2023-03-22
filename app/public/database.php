@@ -28,9 +28,10 @@
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
             // create the cms_page table
-            $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page (
+            $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_markdown (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                text VARCHAR(255) NOT NULL,
+                title VARCHAR(255) NOT NULL,
+                pagemarkdown VARCHAR(255) NOT NULL,
                 user_id INT(11) UNSIGNED NOT NULL,
                 CONSTRAINT `fk_user`
                     FOREIGN KEY (user_id)

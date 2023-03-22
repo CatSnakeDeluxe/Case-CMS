@@ -61,7 +61,7 @@
     <input type="password" name="password" id="password" placeholder="Password">
     <a onclick="messageForgotPassword()" class="forgotPassword" href="#">Forgot Password?</a>
 
-    <input type="submit" value="Log In">
+    <input class="btnOutline" type="submit" value="Log In">
     <p class="formBottomLink">Not a user?<a href="register.php">Register</a></p>
 </form>
 <?php include_once "./partials/footer.php" ?>

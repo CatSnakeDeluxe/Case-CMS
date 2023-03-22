@@ -15,6 +15,24 @@ body {
     font-family: 'Poppins', sans-serif; 
 }
 
+.btnOutline {
+    width: fit-content;
+    margin: auto;
+    border: 1px solid var(--darkBlue);
+    background: var(--lightkBlue);
+    color: var(--darkBlue);
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.btnOutline:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
 /* LOGO */
 .logoContainer {
     margin: 2rem;
@@ -34,11 +52,18 @@ body {
 /* DYNAMIC MESSAGE */
 .dynamicMessage {
     border: 1px solid var(--darkBlue);
-    padding: 0.2rem;
+    padding: 0.3rem 1rem;
     display: block;
     border-radius: 0.3rem;
     margin-top: 0.6rem;
     text-align: center;
+    width: fit-content;
+    /* margin: auto; */
+}
+
+.serverMessage {
+    display: flex;
+    justify-content: center;
 }
 
 /* WHALE AND WHALEMESSAGE */
@@ -104,27 +129,6 @@ form h2 {
 form input {
     width: 80%;
     margin: auto;
-}
-
-form input[type=submit] {
-    width: fit-content;
-    margin: auto;
-    /* background: var(--darkBlue);
-    color: var(--lightBlue);
-    border: none; */
-    border: 1px solid var(--darkBlue);
-    background: var(--lightkBlue);
-    color: var(--darkBlue);
-    padding: 0.6rem 1.4rem;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-
-form input[type=submit]:hover {
-    transform: scale(1.05);
-    transition: 0.3s ease-in-out;
 }
 
 form #username, #password, #email {
@@ -226,7 +230,8 @@ form #username, #password, #email {
 .dynamicPages {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    overflow-y: scroll;
+    height: 400px;
 }
 
 .dynamicPages p {
@@ -243,34 +248,25 @@ form #username, #password, #email {
     display: flex;
     justify-content: center;
 }
+.dynamicPages::-webkit-scrollbar {
+    display: none;
+}
 
 /* CREATE PAGE */
 .createPageHeader {
     display: flex;
-    justify-content: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.createPageHeader button {
+    margin: 0.6rem;
 }
 
 .createPageHeader h2 {
     color: var(--darkBlue);
     font-weight: 400;
     margin: 0.6rem;
-}
-
-.createPageHeader button {
-    border: 1px solid var(--darkBlue);
-    color: var(--darkBlue);
-    background: transparent;
-    font-weight: 600;
-    padding: 0.4rem 1.3rem;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    font-weight: 500;
-    margin: 0.6rem;
-}
-
-.createPageHeader button:hover {
-    transform: scale(1.05);
-    transition: 0.3s ease-in-out;
 }
 
 #markdownOption {
@@ -290,4 +286,55 @@ form #username, #password, #email {
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+/* CREATE PAGE FORM MARKDOWN */
+.markdownForm {
+    width: 70%;
+    padding: 1rem;
+}
+
+.markdownForm #pagemarkdown::-webkit-scrollbar {
+    display: none;
+}
+
+.markdownForm h3 {
+    font-weight: 300;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.markdownForm #pagetitle {
+    outline: none;
+    width: 50%;
+    text-align: center;
+    padding: 0.3rem;
+    margin-bottom: 0.75rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+}
+
+.markdownForm #pagemarkdown {
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* VIEW */
+
+.backToDashboard {
+    text-decoration: none;
+    color: var(--darkBlue);
+    display: block;
+    text-align: center;
+    margin: 0.8rem auto;
+    border: 1px solid var(--darkBlue);
+    width: fit-content;
+    padding: 0.4rem 1.1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
 }

@@ -54,7 +54,7 @@
     <input type="text" name="username" id="username" placeholder="Username">
     <input type="password" name="password" id="password" placeholder="Password">
 
-    <input onclick="messageRegisterBtn()" type="submit" value="Register">
+    <input class="btnOutline" type="submit" value="Register">
     <p class="formBottomLink">Already a user?<a href="login.php">Log In</a></p>
 </form>
 <?php include_once "./partials/footer.php" ?>

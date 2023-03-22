@@ -6,15 +6,18 @@
     $id = $_GET['id'];
 
     // Query the database
-    $sqlquery = "SELECT * FROM cms_page WHERE id=$id";
+    $sqlquery = "SELECT * FROM cms_page_markdown WHERE id=$id";
     $result = $pdo->query($sqlquery);
-    $cms_page = $result->fetch();
+    $cms_page_markdown= $result->fetch();
 ?>
+<?php include_once "./partials/head.php" ?>
+<a href="index.php" class="backToDashboard"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
 <div>
-<?php 
-    $Parsedown = new Parsedown();
-    $html = $Parsedown->text($cms_page['text']);
+    <?php 
+        $parsedown = new Parsedown();
+        $html = $parsedown->text($cms_page_markdown['pagemarkdown']);
 
-    echo $html;
-?>
+        echo $html;
+    ?>
 </div>
+<?php include_once "./partials/footer.php" ?>
