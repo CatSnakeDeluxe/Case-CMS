@@ -8,13 +8,13 @@
     // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_title = trim($_POST["pagetitle"]);
-        $form_markdown = trim($_POST["pagemarkdown"]);
+        $form_markdown = trim($_POST["markdown"]);
         $form_id = trim($_POST["id"]);
 
         // Check if there is any text from user
         if (!empty($form_title) && !empty($form_markdown)) {
             // Prepare sql query to insert new journal entry
-            $sqlquery = "UPDATE cms_page_markdown SET title='$form_title', pagemarkdown='$form_markdown' WHERE id=$form_id";
+            $sqlquery = "UPDATE cms_page_markdown SET title='$form_title', markdown='$form_markdown' WHERE id=$form_id";
             $sqlStatement = $pdo->query($sqlquery);
 
             $_SESSION['message'] = "Successfully edited page";
@@ -30,7 +30,7 @@
         $row = $result->fetch();
 
         $old_title = $row['title'];
-        $old_markdown = $row['pagemarkdown'];
+        $old_markdown = $row['markdown'];
     }
     ob_end_flush();
 ?>
@@ -62,7 +62,7 @@
                 <h3>Page Title</h3>
                 <input type="text" name="pagetitle" id="pagetitle" value="<?= $old_title ?>">
                 <h3>Page Content</h3>
-                <textarea name="pagemarkdown" id="pagemarkdown" cols="30" rows="18" value="<?= $old_markdown ?>"></textarea>
+                <textarea name="markdown" id="markdown" cols="30" rows="18" value="<?= $old_markdown ?>"></textarea>
                 <input class="btnOutline" type="submit" value="Save Changes">
             </form>
         </div>

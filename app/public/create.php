@@ -14,7 +14,7 @@
     // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_title = trim($_POST["pagetitle"]);
-        $form_markdown = trim($_POST["pagemarkdown"]);
+        $form_markdown = trim($_POST["markdown"]);
         $user_id = $_SESSION['user_id'];
 
         // if(!$form_title) {
@@ -29,7 +29,7 @@
         //     exit();
         // }
 
-        $pdo->query("INSERT INTO cms_page_markdown (title, pagemarkdown, user_id) VALUES ('$form_title', '$form_markdown', $user_id)");
+        $pdo->query("INSERT INTO cms_page_markdown (title, markdown, user_id) VALUES ('$form_title', '$form_markdown', $user_id)");
         $_SESSION['message'] = "Successfully added page";
 
         header("location: index.php");
@@ -65,7 +65,7 @@
                 <h3>Page Title</h3>
                 <input type="text" name="pagetitle" id="pagetitle">
                 <h3>Page Content</h3>
-                <textarea name="pagemarkdown" id="pagemarkdown" cols="30" rows="18"></textarea>
+                <textarea name="markdown" id="markdown" cols="30" rows="18"></textarea>
                 <input class="btnOutline" type="submit" value="Create Page">
             </form>
         </div>

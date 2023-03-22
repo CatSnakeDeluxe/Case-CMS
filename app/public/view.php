@@ -14,8 +14,8 @@
 <a href="index.php" class="backToDashboard"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
 <div>
     <?php 
-        $parsedown = new Parsedown();
-        $html = $parsedown->text($cms_page_markdown['pagemarkdown']);
+        $Parsedown = new Parsedown();
+        $html = $Parsedown->text($cms_page_markdown['markdown']);
 
         echo $html;
     ?>
