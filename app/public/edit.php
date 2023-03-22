@@ -46,23 +46,21 @@
         <div class="dashboardHeader">
             <h2>Edit Page</h2>
         </div>
-        <div class="serverMessage">
+        <!-- <div class="serverMessage">
             <?php
             // Write out message from other pages if exists
 
             if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-                echo '<span class="dynamicMessage">' . $_SESSION['message'] . '<span>';
+                echo '<span id="dynamicMessage">' . $_SESSION['message'] . '<span>';
                 unset( $_SESSION['message']);
             }
             ?>
-        </div>
-        <div>
+        </div> -->
+        <div class="editFormContainer">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="number" name="id" id="id" value="<?= $id ?>" hidden>    
-                <h3>Page Title</h3>
+                <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
                 <input type="text" name="pagetitle" id="pagetitle" value="<?= $old_title ?>">
-                <h3>Page Content</h3>
-                <textarea name="markdown" id="markdown" cols="30" rows="18"><?php echo $old_markdown ?></textarea>
+                <textarea name="markdown" id="markdown" rows="18"><?php echo $old_markdown ?></textarea>
                 <input class="btnOutline" type="submit" value="Save Changes">
             </form>
         </div>
