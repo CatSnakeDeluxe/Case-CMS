@@ -1,5 +1,5 @@
 let messageBox = document.getElementById("whaleMessage");
-// const formDashboardContainer = document.getElementById("formDashboardContainer");
+const whaleContainer = document.querySelector(".whaleContainer");
 const markdownOption = document.getElementById("markdownOption");
 const editorOption = document.getElementById("editorOption");
 
@@ -20,4 +20,8 @@ function showEditor() {
 function showMarkdown() {
     markdownOption.style.display = "block";
     editorOption.style.display = "none";
+}
+
+function closeWhaleContainer() {
+    whaleContainer.style.display = "none";
 }

@@ -71,7 +71,6 @@ body {
     display: flex;
     justify-content: center;
     margin: auto;
-    /* width: 50%; */
     margin-bottom: 2rem;
 }
 
@@ -160,7 +159,6 @@ form #username, #password, #email {
 }
 
 /* DASHBOARD */
-
 .dashboardHeader {
     display: flex;
     width: fit-content;
@@ -168,7 +166,7 @@ form #username, #password, #email {
 }
 
 .btnDashboardHeader {
-    margin-left: 0.3rem;
+    margin-left: 0.7rem;
     margin-top: 0.7rem;
 }
 
@@ -246,31 +244,53 @@ form #username, #password, #email {
 
 .dynamicPages {
     display: flex;
-    flex-direction: column;
+    padding: 0.8rem;
+    flex-wrap: wrap;
     overflow-y: scroll;
-    height: 400px;
+    height: 100vh;
+    width: 100%;
 }
 
-.dynamicPages p {
-    text-align: center;
-    font-size: 1.2rem;
+.onePage {
+    background: deeppink;
+    width: 240px;
+    height: 340px;
+}
+
+.dynamicContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+    width: 240px;
+    height: 340px;
+    border-radius: 0.3rem;
+    margin: 1rem;
+    background: url("../img/doc2.png");
 }
 
 .dynamicPages a {
-    margin: 0 0.2rem;
-
+    font-size: 1.1rem;
+    margin: 0 0.3rem;
+    color: var(--darkBlue);
 }
 
-.dynamicPages div {
+/* .dynamicPages div {
     display: flex;
     justify-content: center;
-}
-.dynamicPages::-webkit-scrollbar {
+} */
+
+/* .dynamicPages::-webkit-scrollbar {
     display: none;
-}
+} */
+
+/* .fa-eye, .fa-pen-to-square, .fa-trash {
+    font-size: 1.2rem;
+    margin: 0.3rem;
+} */
 
 /* CREATE PAGE */
-
 .createPageHeader button {
     margin: 0.6rem;
 }
@@ -280,12 +300,14 @@ form #username, #password, #email {
     width: 90%;
     margin: auto;
     display: none;
+    margin-top: 3rem;
 }
 
 #editorOption {
     width: 90%;
     margin: auto;
     display: none;
+    margin-top: 3rem;
 }
 
 .optionTitle {
@@ -302,7 +324,6 @@ form #username, #password, #email {
 /* CREATE PAGE FORM MARKDOWN */
 .markdownForm {
     width: 100%;
-    /* padding: 1rem; */
     background: transparent;
     border: 2px solid var(--formBorder);
     border-radius: 0.6rem;
@@ -350,7 +371,6 @@ form #username, #password, #email {
 }
 
 /* VIEW */
-
 .backToDashboard {
     text-decoration: none;
     color: var(--darkBlue);
