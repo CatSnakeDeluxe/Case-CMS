@@ -264,21 +264,10 @@ form #username, #password, #email {
 }
 
 /* CREATE PAGE */
-/* .createPageHeader {
-    display: flex;
-    width: fit-content;
-    margin: auto;
-} */
 
 .createPageHeader button {
     margin: 0.6rem;
 }
-
-/* .createPageHeader h2 {
-    color: var(--darkBlue);
-    font-weight: 400;
-    margin: 0.6rem;
-} */
 
 #markdownOption {
     display: none;
@@ -326,7 +315,7 @@ form #username, #password, #email {
     font-size: 1rem;
 }
 
-.markdownForm #pagemarkdown {
+.markdownForm #markdown {
     border: none;
     border-radius: 0.3rem;
     padding: 0.3rem;

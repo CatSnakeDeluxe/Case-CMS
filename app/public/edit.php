@@ -62,7 +62,7 @@
                 <h3>Page Title</h3>
                 <input type="text" name="pagetitle" id="pagetitle" value="<?= $old_title ?>">
                 <h3>Page Content</h3>
-                <textarea name="markdown" id="markdown" cols="30" rows="18" value="<?= $old_markdown ?>"></textarea>
+                <textarea name="markdown" id="markdown" cols="30" rows="18"><?php echo $old_markdown ?></textarea>
                 <input class="btnOutline" type="submit" value="Save Changes">
             </form>
         </div>
