@@ -58,7 +58,6 @@ body {
     margin-top: 0.6rem;
     text-align: center;
     width: fit-content;
-    /* margin: auto; */
 }
 
 .serverMessage {
@@ -161,6 +160,18 @@ form #username, #password, #email {
 
 /* DASHBOARD */
 
+.dashboardHeader {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+.dashboardHeader h2 {
+    color: var(--darkBlue);
+    font-weight: 400;
+    margin: 0.6rem;
+}
+
 .dashboardContainer {
     display: flex;
 }
@@ -253,21 +264,21 @@ form #username, #password, #email {
 }
 
 /* CREATE PAGE */
-.createPageHeader {
+/* .createPageHeader {
     display: flex;
     width: fit-content;
     margin: auto;
-}
+} */
 
 .createPageHeader button {
     margin: 0.6rem;
 }
 
-.createPageHeader h2 {
+/* .createPageHeader h2 {
     color: var(--darkBlue);
     font-weight: 400;
     margin: 0.6rem;
-}
+} */
 
 #markdownOption {
     display: none;

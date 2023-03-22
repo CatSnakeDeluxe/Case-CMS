@@ -27,11 +27,12 @@
                 password VARCHAR(255) NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
-            // create the cms_page table
+            // create the cms_page_markdown table
             $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_markdown (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
                 pagemarkdown VARCHAR(255) NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
                 CONSTRAINT `fk_user`
                     FOREIGN KEY (user_id)

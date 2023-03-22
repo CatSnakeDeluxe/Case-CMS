@@ -44,7 +44,7 @@
         <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
     </div>
     <div class="dashboardContent">
-        <div class="createPageHeader">
+        <div class="dashboardHeader">
             <h2>Create a new page</h2>
             <button class="btnOutline" onclick="showEditor()">Editor</button>
             <button class="btnOutline" onclick="showMarkdown()">Markdown</button>
