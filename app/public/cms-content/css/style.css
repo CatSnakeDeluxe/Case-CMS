@@ -110,7 +110,7 @@ body {
 }
 
 /* FORM */
-form {
+.loginRegisterForm {
     background: var(--lightBlue);
     display: flex;
     flex-direction: column;
@@ -119,28 +119,27 @@ form {
     border-radius: 0.3rem;
 }
 
-form h2 {
+.loginRegisterForm h2 {
     text-align: center;
     font-weight: 400;
     margin-top: 0.7rem;
 }
 
-form input {
-    width: 80%;
-    margin: auto;
+.loginRegisterForm input[type="submit"] {
+    margin-top: 0.4rem;
 }
 
-form #username, #password, #email {
-    margin-top: 1rem;
+.loginRegisterForm #username, #password, #email {
+    margin: 0.4rem auto;
     padding: 0.4rem;
     outline: none;
     border: none;
     border-radius: 0.3rem;
+    width: 80%;
 }
 
 .forgotPassword {
-    margin: auto;
-    margin-top: 0.6rem;
+    margin: 0.3rem auto;
     font-size: 0.8rem;
     color: var(--darkBlue);
 }
@@ -299,14 +298,14 @@ form #username, #password, #email {
     height: 400px;
     width: 90%;
     margin: auto;
-    display: none;
+    /* display: none; */
     margin-top: 3rem;
 }
 
 #editorOption {
     width: 90%;
     margin: auto;
-    display: none;
+    /* display: none; */
     margin-top: 3rem;
 }
 
@@ -325,8 +324,6 @@ form #username, #password, #email {
 .markdownForm {
     width: 100%;
     background: transparent;
-    border: 2px solid var(--formBorder);
-    border-radius: 0.6rem;
 }
 
 .markdownForm #pagemarkdown::-webkit-scrollbar {
@@ -357,17 +354,36 @@ form #username, #password, #email {
     padding: 0.5rem;
     outline: none;
     font-size: 1rem;
-    border-bottom: 1px solid var(--formBorder);
+    border: 2px solid var(--formBorder);
+    border-radius: 0.6rem;
+    height: 400px;
 }
 
 .markdownForm input[type="submit"] {
-    margin-bottom: 1rem;
+    display: flex;
+    margin-top: 0.6rem;
 }
 
 /* EDIT FORM */
 .editFormContainer {
     width: 90%;
     margin: auto;
+}
+
+.tinyEditorForm [type="submit"] {
+    display: flex;
+}
+
+.tinyEditorForm #pagetitle {
+    outline: none;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 2px -2px rgba(34,47,62,.1), 0 8px 8px -4px rgba(34,47,62,.07);
 }
 
 /* VIEW */

@@ -14,7 +14,8 @@
     <div class="adminPanel">
         <?php include_once "./partials/logo.php" ?>
         <h2><?= $_SESSION['username'] ?></h2>
-        <a href="create.php" class="createPageBtn">Create new page<i class="fa-solid fa-plus"></i></a>
+        <a href="createMarkdown.php" class="createPageBtn">Create new page using markdown<i class="fa-solid fa-plus"></i></a>
+        <a href="createTinyMCE.php" class="createPageBtn">Create new page using Editor<i class="fa-solid fa-plus"></i></a>
         <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
     </div>
     <div class="dashboardContent">

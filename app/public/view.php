@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    require_once "database.php";
-    require_once "parsedown.php";
+    include_once "database.php";
+    include_once "parsedown.php";
 
     $id = $_GET['id'];
 

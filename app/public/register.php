@@ -49,7 +49,7 @@
     </div>
 </div>
 
-<form method="post">
+<form class="loginRegisterForm" method="post">
     <h2>Register</h2>
     <input type="text" name="username" id="username" placeholder="Username">
     <input type="password" name="password" id="password" placeholder="Password">
