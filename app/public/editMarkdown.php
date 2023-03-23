@@ -46,16 +46,6 @@
         <div class="dashboardHeader">
             <h2>Edit Page</h2>
         </div>
-        <!-- <div class="serverMessage">
-            <?php
-            // Write out message from other pages if exists
-
-            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-                echo '<span id="dynamicMessage">' . $_SESSION['message'] . '<span>';
-                unset( $_SESSION['message']);
-            }
-            ?>
-        </div> -->
         <div class="editFormContainer">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="number" name="id" id="id" value="<?= $id ?>" hidden>

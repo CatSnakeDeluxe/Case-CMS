@@ -43,7 +43,7 @@
                     <p>" . $row['title'] . "</p>
                 </a>
                 <div>
-                    <a href='edit.php?id=$id'>" . $edit . "</a>
+                    <a href='editMarkdown.php?id=$id'>" . $edit . "</a>
                     <a href='delete.php?id=$id'>" . $delete . "</a>
                 </div>
             </div>";
@@ -60,7 +60,7 @@
                     <p>" . $row['title'] . "</p>
                 </a>
                 <div>
-                    <a href='edit.php?id=$id'>" . $edit . "</a>
+                    <a href='editEditor.php?id=$id'>" . $edit . "</a>
                     <a href='delete.php?id=$id'>" . $delete . "</a>
                 </div>
             </div>";
