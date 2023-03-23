@@ -43,19 +43,28 @@
         <div class="dashboardHeader">
             <h2>Create a new page</h2>
         </div>
-        <?php
-            // Write out message from other pages if exists
-            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-                echo '<span>' . $_SESSION['message'] . '<span>';
-                unset( $_SESSION['message']);
-            }
-        ?>
         <div id="markdownOption">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="text" name="pagetitle" id="pagetitle" placeholder="Page Title">
                 <textarea name="markdown" id="markdown" rows="14" placeholder="Write your markdown code here"></textarea>
                 <input class="btnOutline" type="submit" value="Create Page">
             </form>
+        </div>
+        <div class="whaleContainer whaleContainerLoggedIn">
+            <p class="whaleMessage" id="whaleMessage">
+                I'm here to tell you if anything goes wrong. You can do this!
+            <?php
+            // Write out message from other pages if exists
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
+                unset( $_SESSION['message']);
+            }
+            ?>
+            </p>
+            <p class="messageBubble"></p>
+            <div class="whaleImgContainer">
+                <img src="./cms-content/img/whale.png" alt="">
+            </div>
         </div>
     </div>
 </div>

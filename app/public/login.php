@@ -45,7 +45,7 @@
         <?php
         // Write out message from other pages if exists
         if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-            echo '<span id="dynamicMessage">' . $_SESSION['message'] . '<span>';
+            echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
             unset( $_SESSION['message']);
         }
         ?>

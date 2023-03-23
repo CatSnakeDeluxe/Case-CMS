@@ -3,7 +3,6 @@
     include_once "database.php";
     include_once "parsedown.php";
 
-    // redirect user to index page if already logged in
     if (!isset($_SESSION['user_id'])) {
         header('location: login.php');
         exit();
@@ -12,6 +11,13 @@
 <?php include_once "./partials/head.php" ?>
 <div class="dashboardContainer">
     <div class="adminPanel">
+        <?php
+            // Write out message from other pages if exists
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                echo '<div class="dynamicMessageContainerIndex"><span id="dynamicMessage">' . $_SESSION['message'] . '</span></div>';
+                unset( $_SESSION['message']);
+            }
+        ?>
         <?php include_once "./partials/logo.php" ?>
         <?php
             $id = $_SESSION['user_id'];
@@ -24,8 +30,24 @@
         <p class="createPageBtn"><a href="createMarkdown.php" >Create Page | Markdown<i class="fa-solid fa-plus"></i></a></p>
         <p class="createPageBtn"><a href="createTinyMCE.php">Create Page | Editor<i class="fa-solid fa-plus"></i></a></p>
         <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
-    </div>
-    <div class="dashboardContent">
+        </div>
+        <div class="dashboardContent">
+        <div class="whaleContainer whaleContainerLoggedIn">
+            <p class="whaleMessage" id="whaleMessage">
+                Here you can see all pages you have created. Isn't that neat?
+                <?php
+                // Write out message from other pages if exists
+                if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                    echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
+                    unset( $_SESSION['message']);
+                }
+                ?>
+            </p>
+            <p class="messageBubble"></p>
+            <div class="whaleImgContainer">
+                <img src="./cms-content/img/whale.png" alt="">
+            </div>
+        </div>
         <?php 
         // query the database
         $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown";

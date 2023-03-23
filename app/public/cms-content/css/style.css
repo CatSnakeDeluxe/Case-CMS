@@ -58,12 +58,17 @@ body {
     border-radius: 0.3rem;
     margin-top: 0.6rem;
     text-align: center;
-    width: fit-content;
+    /* width: fit-content; */
 }
 
-.serverMessage {
-    display: flex;
-    justify-content: center;
+.dynamicMessageContainer {
+    width: fit-content;
+    margin: auto;
+}
+
+.dynamicMessageContainerIndex {
+    width: fit-content;
+    align-self: center;
 }
 
 /* WHALE AND WHALEMESSAGE */
@@ -109,6 +114,11 @@ body {
     margin-left: -15px;
 }
 
+.whaleContainerLoggedIn {
+    margin-top: 1rem;
+    margin-bottom: -0.8rem;
+}
+
 /* FORM */
 .loginRegisterForm {
     background: var(--lightBlue);
@@ -129,7 +139,7 @@ body {
     margin-top: 0.4rem;
 }
 
-.loginRegisterForm #username, #password, #email {
+.loginRegisterForm #username, #password, #email, #image {
     margin: 0.4rem auto;
     padding: 0.4rem;
     outline: none;
@@ -261,15 +271,16 @@ body {
 
 .dashboardContent {
     flex: 2;
+    overflow-y: scroll;
+    height: 100vh;
 }
 
 .dynamicPages {
     display: flex;
     padding: 0.8rem;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    height: 100vh;
     width: 100%;
+    margin: auto;
 }
 
 .dynamicContent {
@@ -317,16 +328,16 @@ body {
 }
 
 #markdownOption {
-    height: 400px;
+    /* height: 400px; */
     width: 90%;
     margin: auto;
-    margin-top: 3rem;
+
 }
 
 #editorOption {
     width: 90%;
     margin: auto;
-    margin-top: 3rem;
+
 }
 
 .optionTitle {
