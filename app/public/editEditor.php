@@ -40,14 +40,17 @@
         <?php include_once "./partials/logo.php" ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <a href="index.php" class="createPageBtn"><i class="fa-solid fa-arrow-left"></i>Take me back</a>
-        <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
+        <div class="iconContainer">
+            <a href="logout.php" class="bottomIcon"><i class="fa-solid fa-door-open"></i></a>
+            <a href="settings.php" class="bottomIcon"><i class="fa-solid fa-gear"></i></a>
+        </div>
     </div>
     <div class="dashboardContent">
         <div class="dashboardHeader">
             <h2>Edit Page</h2>
         </div>
         <div class="editFormContainer">
-        <form class="tinyEditorForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form class="tinyEditorForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
                 <input type="text" name="pagetitle" id="pagetitle" placeholder="Page Title" value="<?= $old_title ?>">
                 <textarea id="tinyEditor" name="tinyEditor" placeholder="Start creating content here"><?php echo $old_content ?></textarea>
@@ -66,6 +69,22 @@
                     ],
                 });
             </script>
+        </div>
+        <div class="whaleContainer whaleContainerLoggedIn">
+            <p class="whaleMessage" id="whaleMessage">
+                I'm here to tell you if anything goes wrong. You can do this!
+                <?php
+                // Write out message from other pages if exists
+                if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                    echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
+                    unset( $_SESSION['message']);
+                }
+                ?>
+            </p>
+            <p class="messageBubble"></p>
+            <div class="whaleImgContainer">
+                <img src="./cms-content/img/whale.png" alt="">
+            </div>
         </div>
     </div>
 </div>

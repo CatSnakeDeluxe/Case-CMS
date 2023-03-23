@@ -35,9 +35,12 @@
         </div>
         </div>
         <div class="dashboardContent">
+        <div class="dashboardHeader">
+            <h2>General settings</h2>
+        </div>
         <div class="whaleContainer whaleContainerLoggedIn">
             <p class="whaleMessage" id="whaleMessage">
-                Here you can see all pages you have created. Isn't that neat?
+                Here you can change colors and other fun stuff for your pages.
                 <?php
                 // Write out message from other pages if exists
                 if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
@@ -51,52 +54,7 @@
                 <img src="./cms-content/img/whale.png" alt="">
             </div>
         </div>
-        <?php 
-        // query the database
-        $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown";
-        $resultMarkdown = $pdo->query($sqlqueryMarkdown);
-
-        $sqlqueryEditor = "SELECT * FROM cms_page_editor";
-        $resultEditor = $pdo->query($sqlqueryEditor);
-
-        // render the data
-        echo '<div class="dynamicPages">';
-        while($row = $resultMarkdown->fetch()) {
-            $id = $row['id'];
-            $edit = '<i class="fa-solid fa-pen-to-square"></i>';
-            $delete = '<i class="fa-solid fa-trash"></i>';
-            $dynamicContent = 'class="dynamicContent"';
-
-            echo
-            "<div " . $dynamicContent . ">
-                <a href='view.php?id=$id'>
-                    <p>" . $row['title'] . "</p>
-                </a>
-                <div>
-                    <a href='editMarkdown.php?id=$id'>" . $edit . "</a>
-                    <a href='delete.php?id=$id'>" . $delete . "</a>
-                </div>
-            </div>";
-        }
-        while($row = $resultEditor->fetch()) {
-            $id = $row['id'];
-            $edit = '<i class="fa-solid fa-pen-to-square"></i>';
-            $delete = '<i class="fa-solid fa-trash"></i>';
-            $dynamicContent = 'class="dynamicContent"';
-
-            echo
-            "<div " . $dynamicContent . ">
-                <a href='view.php?id=$id'>
-                    <p>" . $row['title'] . "</p>
-                </a>
-                <div>
-                    <a href='editEditor.php?id=$id'>" . $edit . "</a>
-                    <a href='delete.php?id=$id'>" . $delete . "</a>
-                </div>
-            </div>";
-        }
-        echo '</div>';
-        ?>
+        
     </div>
 </div>
 <?php include_once "./partials/footer.php" ?>

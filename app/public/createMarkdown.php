@@ -37,7 +37,10 @@
         <?php include_once "./partials/logo.php" ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <a href="index.php" class="backBtn"><i class="fa-solid fa-arrow-left"></i>Take me back</a>
-        <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
+        <div class="iconContainer">
+            <a href="logout.php" class="bottomIcon"><i class="fa-solid fa-door-open"></i></a>
+            <a href="settings.php" class="bottomIcon"><i class="fa-solid fa-gear"></i></a>
+        </div>
     </div>
     <div class="dashboardContent">
         <div class="dashboardHeader">

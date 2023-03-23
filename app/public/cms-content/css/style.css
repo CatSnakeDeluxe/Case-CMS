@@ -255,16 +255,22 @@ body {
     margin-right: 0.8rem;
 }
 
-.logoutBtn {
-    align-self: center;
+.iconContainer {
+    display: flex;
+    justify-content: center;
     position: fixed;
-    bottom: 15px;
+    width: 320px;
+    bottom: 10px;
+}
+
+.bottomIcon {
     font-size: 1.5rem;
     color: var(--darkBlue);
     cursor: pointer;
+    margin: 0.5rem;
 }
 
-.logoutBtn:hover {
+.bottomIcon:hover {
     transform: scale(1.05);
     transition: 0.3s ease-in-out;
 }
@@ -328,16 +334,13 @@ body {
 }
 
 #markdownOption {
-    /* height: 400px; */
     width: 90%;
     margin: auto;
-
 }
 
 #editorOption {
     width: 90%;
     margin: auto;
-
 }
 
 .optionTitle {

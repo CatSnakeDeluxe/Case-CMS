@@ -6,13 +6,27 @@
     if (!isset($_SESSION['user_id'])) {
         header('location: login.php');
         exit();
-    }
+    }   
 
     // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_title = trim($_POST["pagetitle"]);
         $form_markdown = trim($_POST["markdown"]);
         $form_id = trim($_POST["id"]);
+
+        if(!$form_title) {
+            $id = $_GET['id'];
+            $_SESSION['message'] = "Title needed";
+            header("location: editMarkdown.php?id=$id");
+            exit();
+        }
+
+        if(!$form_markdown) {
+            $id = $_GET['id'];
+            $_SESSION['message'] = "Content needed";
+            header("location: editMarkdown.php?id=$id");
+            exit();
+        }
 
         // Check if there is any text from user
         if (!empty($form_title) && !empty($form_markdown)) {
@@ -43,7 +57,10 @@
         <?php include_once "./partials/logo.php" ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <a href="index.php" class="createPageBtn"><i class="fa-solid fa-arrow-left"></i>Take me back</a>
-        <a href="logout.php" class="logoutBtn"><i class="fa-solid fa-door-open"></i></a>
+        <div class="iconContainer">
+            <a href="logout.php" class="bottomIcon"><i class="fa-solid fa-door-open"></i></a>
+            <a href="settings.php" class="bottomIcon"><i class="fa-solid fa-gear"></i></a>
+        </div>
     </div>
     <div class="dashboardContent">
         <div class="dashboardHeader">
@@ -56,6 +73,22 @@
                 <textarea name="markdown" id="markdown" rows="18"><?php echo $old_markdown ?></textarea>
                 <input class="btnOutline" type="submit" value="Save Changes">
             </form>
+        </div>
+        <div class="whaleContainer whaleContainerLoggedIn">
+            <p class="whaleMessage" id="whaleMessage">
+                I'm here to tell you if anything goes wrong. You can do this!
+                <?php
+                // Write out message from other pages if exists
+                if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                    echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
+                    unset( $_SESSION['message']);
+                }
+                ?>
+            </p>
+            <p class="messageBubble"></p>
+            <div class="whaleImgContainer">
+                <img src="./cms-content/img/whale.png" alt="">
+            </div>
         </div>
     </div>
 </div>
