@@ -28,21 +28,34 @@
         echo '<div class="dynamicPages">';
         while($row = $result->fetch()) {
             $id = $row['id'];
-            $view = '<i class="fa-solid fa-eye"></i>';
             $edit = '<i class="fa-solid fa-pen-to-square"></i>';
             $delete = '<i class="fa-solid fa-trash"></i>';
             $dynamicContent = 'class="dynamicContent"';
 
             echo
-                "<div " . $dynamicContent . ">
-                    <div>
-                        <a href='view.php?id=$id'>" . $row['title'] . "</a>
-                    </div>
-                    <div>
-                        <a href='edit.php?id=$id'>" . $edit . "</a>
-                        <a href='delete.php?id=$id'>" . $delete . "</a>
-                    </div>
-                </div>";
+            "<div " . $dynamicContent . ">
+                <a href='view.php?id=$id'>
+                    <p>" . $row['title'] . "</p>
+                </a>
+                <div>
+                    <a href='edit.php?id=$id'>" . $edit . "</a>
+                    <a href='delete.php?id=$id'>" . $delete . "</a>
+                </div>
+            </div>";
+
+            // <a href='edit.php?id=$id'>" . $edit . "</a>
+            //         <a href='delete.php?id=$id'>" . $delete . "</a>
+
+            // echo
+            //     "<div " . $dynamicContent . ">
+            //         <div>
+            //             <a href='view.php?id=$id'>" . $row['title'] . "</a>
+            //         </div>
+            //         <div>
+            //             <a href='edit.php?id=$id'>" . $edit . "</a>
+            //             <a href='delete.php?id=$id'>" . $delete . "</a>
+            //         </div>
+            //     </div>";
         }
         echo '</div>';
         ?>

@@ -1,6 +1,6 @@
 <nav>
     <div>
-    <a href="index.php" class="backToDashboard"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+    <a href="index.php" class="backToDashboard">Back to Dashboard</a>
     </div>
     <div>
         <a href="">NAV</a>
