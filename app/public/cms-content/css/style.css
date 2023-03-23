@@ -183,7 +183,7 @@ body {
     background: var(--lightBlue);
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 320px;
     height: 100vh;
     align-content: center;
 }
@@ -192,19 +192,24 @@ body {
     text-align: center;
     font-weight: 400;
     color: var(--darkBlue);
+    margin-bottom: 1rem;
 }
 
 .createPageBtn {
     align-self: center;
-    width: fit-content;
+    width: 85%;
+    text-align: center;
     border: 1px solid var(--darkBlue);
-    background: var(--lightkBlue);
-    color: var(--darkBlue);
     padding: 0.4rem 1.3rem;
     border-radius: 0.4rem;
     cursor: pointer;
     font-weight: 500;
-    margin: 1rem;
+    margin: 0.6rem;
+    text-decoration: none;
+}
+
+.createPageBtn a {
+    color: var(--darkBlue);
     text-decoration: none;
 }
 
@@ -298,14 +303,12 @@ body {
     height: 400px;
     width: 90%;
     margin: auto;
-    /* display: none; */
     margin-top: 3rem;
 }
 
 #editorOption {
     width: 90%;
     margin: auto;
-    /* display: none; */
     margin-top: 3rem;
 }
 

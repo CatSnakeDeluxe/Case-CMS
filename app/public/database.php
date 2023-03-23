@@ -15,11 +15,14 @@
         $result = $pdo->query("SHOW TABLES LIKE 'user'");
         $user_table_exists = $result->rowCount() == 1;
 
-        $result = $pdo->query("SHOW TABLES LIKE 'cms_page'");
-        $cms_page_table_exists = $result->rowCount() == 1;
+        $result = $pdo->query("SHOW TABLES LIKE 'cms_page_markdown'");
+        $cms_page_table_markdown_exists = $result->rowCount() == 1;
+
+        $result = $pdo->query("SHOW TABLES LIKE 'cms_page_editor'");
+        $cms_page_table_editor_exists = $result->rowCount() == 1;
 
         // if the tables doesn't exist then create them
-        if (!$user_table_exists || !$cms_page_table_exists) {
+        if (!$user_table_exists || !$cms_page_table_markdown_exists || !$cms_page_table_editor_exists) {
             // create the user table
             $pdo->exec("CREATE TABLE IF NOT EXISTS user (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -31,10 +34,23 @@
             $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_markdown (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
-                markdown VARCHAR(255) NOT NULL,
+                markdown VARCHAR(10000) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
                 CONSTRAINT `fk_user`
+                    FOREIGN KEY (user_id)
+                    REFERENCES user(id)
+                    ON DELETE CASCADE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+
+            // create the cms_page_editor table
+            $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_editor (
+                id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                content VARCHAR(10000) NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                user_id INT(11) UNSIGNED NOT NULL,
+                CONSTRAINT `fk_user_2`
                     FOREIGN KEY (user_id)
                     REFERENCES user(id)
                     ON DELETE CASCADE

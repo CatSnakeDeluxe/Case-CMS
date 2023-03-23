@@ -46,8 +46,6 @@
     <div class="dashboardContent">
         <div class="dashboardHeader">
             <h2>Create a new page</h2>
-            <!-- <button class="btnOutline btnDashboardHeader" onclick="showEditor()">Editor</button>
-            <button class="btnOutline btnDashboardHeader" onclick="showMarkdown()">Markdown</button> -->
         </div>
         <div id="markdownOption">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

@@ -29,7 +29,7 @@
         //     exit();
         // }
 
-        $pdo->query("INSERT INTO cms_page_markdown (title, markdown, user_id) VALUES ('$form_title', '$form_tinyeditor', $user_id)");
+        $pdo->query("INSERT INTO cms_page_editor (title, content, user_id) VALUES ('$form_title', '$form_tinyeditor', $user_id)");
         $_SESSION['message'] = "Successfully added page";
 
         header("location: index.php");
@@ -46,8 +46,6 @@
     <div class="dashboardContent">
         <div class="dashboardHeader">
             <h2>Create a new page</h2>
-            <!-- <button class="btnOutline btnDashboardHeader" onclick="showEditor()">Editor</button>
-            <button class="btnOutline btnDashboardHeader" onclick="showMarkdown()">Markdown</button> -->
         </div>
         <div id="editorOption">
             <form class="tinyEditorForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
