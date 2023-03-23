@@ -8,6 +8,12 @@
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
 
+    $filename = $_FILES["image"]["name"];
+    $tempname = $_FILES["image"]["tmp_name"];  
+    $folder = "./uploads/". $filename;
+
+    move_uploaded_file($tempname, $folder . '/' . $filename);
+
     if(!$form_username || !$form_password) {
         $_SESSION['message'] = "All fields required.";
         header('location: register.php');
@@ -23,7 +29,7 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO user (username, password) VALUES ('$form_username', '$hashed_password')");
+            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$filename')");
             $_SESSION['message'] = "Successfully created user! Please login.";
             header('location: login.php');
             exit();
@@ -49,10 +55,11 @@
     </div>
 </div>
 
-<form class="loginRegisterForm" method="post">
+<form class="loginRegisterForm" method="post" enctype="multipart/form-data">
     <h2>Register</h2>
     <input type="text" name="username" id="username" placeholder="Username">
     <input type="password" name="password" id="password" placeholder="Password">
+    <input type="file" name="image" id="image">
 
     <input class="btnOutline" type="submit" value="Register">
     <p class="formBottomLink">Already a user?<a href="login.php">Log In</a></p>

@@ -13,6 +13,13 @@
 <div class="dashboardContainer">
     <div class="adminPanel">
         <?php include_once "./partials/logo.php" ?>
+        <?php
+            $id = $_SESSION['user_id'];
+            $sqlqueryUser = "SELECT * FROM user WHERE id=$id";
+            $resultUser = $pdo->query($sqlqueryUser);
+            echo "<p>" . $resultUser->fetch()['filename'] . "</p>" ;
+            // echo '<img src="./image/' . $resultUser->fetch()['filename'] . '">';
+        ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <p class="createPageBtn"><a href="createMarkdown.php" >Create Page | Markdown<i class="fa-solid fa-plus"></i></a></p>
         <p class="createPageBtn"><a href="createTinyMCE.php">Create Page | Editor<i class="fa-solid fa-plus"></i></a></p>
@@ -26,8 +33,6 @@
 
         $sqlqueryEditor = "SELECT * FROM cms_page_editor";
         $resultEditor = $pdo->query($sqlqueryEditor);
-
-        // $Parsedown = new Parsedown();
 
         // render the data
         echo '<div class="dynamicPages">';

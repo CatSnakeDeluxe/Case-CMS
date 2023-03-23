@@ -195,6 +195,21 @@ body {
     margin-bottom: 1rem;
 }
 
+.backBtn {
+    align-self: center;
+    width: 85%;
+    text-align: center;
+    border: 1px solid var(--darkBlue);
+    padding: 0.4rem 1.3rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0.6rem;
+    text-decoration: none;
+    color: var(--darkBlue);
+    text-decoration: none;
+}
+
 .createPageBtn {
     align-self: center;
     width: 85%;
@@ -205,6 +220,8 @@ body {
     cursor: pointer;
     font-weight: 500;
     margin: 0.6rem;
+    text-decoration: none;
+    color: var(--darkBlue);
     text-decoration: none;
 }
 

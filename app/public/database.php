@@ -27,7 +27,8 @@
             $pdo->exec("CREATE TABLE IF NOT EXISTS user (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(50) UNIQUE NOT NULL,
-                password VARCHAR(255) NOT NULL
+                password VARCHAR(255) NOT NULL,
+                filename VARCHAR(255) NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
             // create the cms_page_markdown table
