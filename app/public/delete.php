@@ -2,6 +2,11 @@
 session_start();
 include_once "database.php";
 
+if (!isset($_SESSION['user_id'])) {
+    header('location: login.php');
+    exit();
+}
+
 // Retreive which id to delete from url
 $idToRemove = $_GET['id'];
 

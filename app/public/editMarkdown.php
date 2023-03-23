@@ -3,7 +3,10 @@
     ob_start();
     require_once "database.php";
 
-    // Retreive the journal entry
+    if (!isset($_SESSION['user_id'])) {
+        header('location: login.php');
+        exit();
+    }
 
     // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

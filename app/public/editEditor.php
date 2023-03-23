@@ -3,6 +3,11 @@
     ob_start();
     include_once "database.php";
 
+    if (!isset($_SESSION['user_id'])) {
+        header('location: login.php');
+        exit();
+    }
+
     // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_title = trim($_POST["pagetitle"]);

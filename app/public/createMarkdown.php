@@ -7,27 +7,23 @@
         exit();
     }
 
-    // query the database
-    // $sqlquery = "SELECT * FROM cms_page_markdown";
-    // $result = $pdo->query($sqlquery);
-
     // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_title = trim($_POST["pagetitle"]);
         $form_markdown = trim($_POST["markdown"]);
         $user_id = $_SESSION['user_id'];
 
-        // if(!$form_title) {
-        //     $_SESSION['message'] = "Title needed";
-        //     header("location: create.php");
-        //     exit();
-        // }
+        if(!$form_title) {
+            $_SESSION['message'] = "Title needed";
+            header("location: createMarkdown.php");
+            exit();
+        }
 
-        // if(!$form_markdown) {
-        //     $_SESSION['message'] = "Content needed";
-        //     header("location: create.php");
-        //     exit();
-        // }
+        if(!$form_markdown) {
+            $_SESSION['message'] = "Content needed";
+            header("location: createMarkdown.php");
+            exit();
+        }
 
         $pdo->query("INSERT INTO cms_page_markdown (title, markdown, user_id) VALUES ('$form_title', '$form_markdown', $user_id)");
         $_SESSION['message'] = "Successfully added page";
@@ -47,6 +43,13 @@
         <div class="dashboardHeader">
             <h2>Create a new page</h2>
         </div>
+        <?php
+            // Write out message from other pages if exists
+            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                echo '<span>' . $_SESSION['message'] . '<span>';
+                unset( $_SESSION['message']);
+            }
+        ?>
         <div id="markdownOption">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="text" name="pagetitle" id="pagetitle" placeholder="Page Title">
