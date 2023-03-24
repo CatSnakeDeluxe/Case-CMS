@@ -23,12 +23,10 @@
             $id = $_SESSION['user_id'];
             $sqlqueryUser = "SELECT * FROM user WHERE id=$id";
             $resultUser = $pdo->query($sqlqueryUser);
-            echo "<p>" . $resultUser->fetch()['filename'] . "</p>" ;
-            // echo '<img src="./image/' . $resultUser->fetch()['filename'] . '">';
+            echo '<div class="dashboardImg"><img src="./uploads/' . $resultUser->fetch()['filename'] . '"></div>';
         ?>
         <h2><?= $_SESSION['username'] ?></h2>
-        <p class="createPageBtn"><a href="createMarkdown.php" >Create Page | Markdown<i class="fa-solid fa-plus"></i></a></p>
-        <p class="createPageBtn"><a href="createTinyMCE.php">Create Page | Editor<i class="fa-solid fa-plus"></i></a></p>
+        <a href="index.php" class="backBtn"><i class="fa-solid fa-arrow-left"></i>Take me back</a>
         <div class="iconContainer">
             <a href="logout.php" class="bottomIcon"><i class="fa-solid fa-door-open"></i></a>
             <a href="settings.php" class="bottomIcon"><i class="fa-solid fa-gear"></i></a>
@@ -54,7 +52,7 @@
                 <img src="./cms-content/img/whale.png" alt="">
             </div>
         </div>
-        
+
     </div>
 </div>
 <?php include_once "./partials/footer.php" ?>

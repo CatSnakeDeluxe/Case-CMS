@@ -8,17 +8,29 @@
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
 
-    $filename = $_FILES["image"]["name"];
-    $tempname = $_FILES["image"]["tmp_name"];  
-    $folder = "./uploads/". $filename;
-
-    move_uploaded_file($tempname, $folder . '/' . $filename);
+    $file_name = $_FILES['image']['name'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    $folder = "./uploads/" . $file_name;
+    move_uploaded_file($tmp_name, $folder);
 
     if(!$form_username || !$form_password) {
-        $_SESSION['message'] = "All fields required.";
+        $_SESSION['message'] = "All fields required";
         header('location: register.php');
         exit();
     }
+
+    if(!$file_name) {
+        $_SESSION['message'] = "Profile image required";
+        header('location: register.php');
+        exit();
+    } 
+    
+    // else {
+    //     $file_name = $_FILES['image']['name'];
+    //     $tmp_name = $_FILES['image']['tmp_name'];
+    //     $folder = "./uploads/" . $filename;
+    //     move_uploaded_file($tmp_name, $folder);
+    // }
 
     $result = $pdo->query("SELECT * FROM user WHERE username = '$form_username'");
     $user = $result->fetch();
@@ -29,7 +41,7 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$filename')");
+            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$file_name')");
             $_SESSION['message'] = "Successfully created user! Please login.";
             header('location: login.php');
             exit();
