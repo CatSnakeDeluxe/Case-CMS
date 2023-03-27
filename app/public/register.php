@@ -17,16 +17,20 @@
         $error = $_FILES['image']['error'];
         $size = $_FILES['image']['size'];
 
-        if ($error) {
-            exit("Error uploading file, error code: $error");
-        }
-
         $allowed_file_extensions = ["jpg", "jpeg", "png"];
         $type_parts = explode("/", $type);
         $extension = $type_parts[1];
 
         if (!in_array($extension, $allowed_file_extensions)) {
-            exit("Not valid file extension: $extension");
+            $_SESSION['message'] = "Not a valid file extension - Valid extensions [.jpg .jpeg .png]";
+            header("location: register.php");
+            exit();
+        }
+
+        if($size > 2000000) {
+            $_SESSION['message'] = "File is too big to upload - max size is 2MB";
+            header("location: register.php");
+            exit();
         }
 
         $target_directory = $_SERVER['DOCUMENT_ROOT'] . "/cms-content/uploads/";
