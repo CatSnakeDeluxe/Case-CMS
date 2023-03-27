@@ -29,6 +29,7 @@
             // create the user table
             $pdo->exec("CREATE TABLE IF NOT EXISTS user (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                email VARCHAR(50) NOT NULL,
                 username VARCHAR(50) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
                 filename VARCHAR(255) NOT NULL
@@ -54,7 +55,7 @@
                 markdown VARCHAR(10000) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
-                CONSTRAINT `fk_user`
+                CONSTRAINT `fk_user_2`
                     FOREIGN KEY (user_id)
                     REFERENCES user(id)
                     ON DELETE CASCADE
@@ -67,7 +68,7 @@
                 content VARCHAR(10000) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
-                CONSTRAINT `fk_user_2`
+                CONSTRAINT `fk_user_3`
                     FOREIGN KEY (user_id)
                     REFERENCES user(id)
                     ON DELETE CASCADE

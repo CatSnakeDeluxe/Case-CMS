@@ -5,6 +5,7 @@
     // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $form_email = $_POST['email'];
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
     $upload_success = false;
@@ -41,7 +42,7 @@
     
     }
 
-    if(!$form_username || !$form_password) {
+    if(!$form_username || !$form_password || !$form_email) {
         $_SESSION['message'] = "All fields required";
         header('location: register.php');
         exit();
@@ -56,7 +57,20 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$name')");
+            $pdo->query("INSERT INTO user (email, username, password, filename) VALUES ('$form_email', '$form_username', '$hashed_password', '$name')");
+            
+            $id = $_SESSION['user_id'];
+            // $sqlquerySettings = "SELECT * FROM settings WHERE id=$id";
+            // $resultSettings = $pdo->query($sqlquerySettings);
+            // $row = $resultSettings->fetch();
+
+            // $check_if_settings_exist = $pdo->query("SHOW TABLES LIKE 'settings'");
+            // $settings = $check_if_settings_exist->rowCount() == 1;
+
+            // if($check_if_settings_exist->rowCount() == 1) {
+            //     $pdo->query("INSERT INTO settings (font, background_color, header_footer_color, user_id) VALUES ('Poppins', '#fff', '#333', $id)");
+            // }
+            
             $_SESSION['message'] = "Successfully created user! Please login.";
             header('location: login.php');
             exit();
@@ -84,6 +98,7 @@
 
 <form class="loginRegisterForm" method="post" enctype="multipart/form-data">
     <h2>Register</h2>
+    <input type="email" name="email" id="email" placeholder="Email">
     <input type="text" name="username" id="username" placeholder="Username">
     <input type="password" name="password" id="password" placeholder="Password">
     <input type="file" name="image" id="image">

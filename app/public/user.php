@@ -63,15 +63,18 @@
                 while($row = $resultUsers->fetch()) {
                     // $id = $row['id'];
                     $dynamicUser = 'class="dynamicUser"';
+                    $dynamicImg = 'class="dynamicImgContainer"';
+                    $dynamicDiv = 'class="dynamicDiv"';
                     $src = "./cms-content/uploads/";
 
                     echo
                     "<div " . $dynamicUser . ">
-                        <div>
-                            <p> " . $row['username'] . " </p>
-                        </div>
-                        <div>
+                        <div " . $dynamicImg .">
                             <img src=" . $src . $row['filename'] . ">
+                        </div>
+                        <div " . $dynamicDiv . ">
+                            <p> " . $row['username'] . " </p>
+                            <p> " . $row['email'] . " </p>
                         </div>
                     </div>";
                 }

@@ -33,6 +33,11 @@ nav a {
     margin: 0 1rem;
 }
 
+.backToDashboard {
+    position: absolute;
+    left: 8px;
+}
+
 .cmsContent {
     width: 80%;
     margin: auto;
