@@ -46,6 +46,7 @@
         <div class="iconContainer">
             <a href="logout.php" class="bottomIcon"><i class="fa-solid fa-door-open"></i></a>
             <a href="settings.php" class="bottomIcon"><i class="fa-solid fa-gear"></i></a>
+            <a href="user.php" class="bottomIcon"><i class="fa-solid fa-user"></i></a>
         </div>
     </div>
     <div class="dashboardContent">

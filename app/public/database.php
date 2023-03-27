@@ -15,6 +15,9 @@
         $result = $pdo->query("SHOW TABLES LIKE 'user'");
         $user_table_exists = $result->rowCount() == 1;
 
+        $result = $pdo->query("SHOW TABLES LIKE 'settings'");
+        $settings_table_exists = $result->rowCount() == 1;
+
         $result = $pdo->query("SHOW TABLES LIKE 'cms_page_markdown'");
         $cms_page_table_markdown_exists = $result->rowCount() == 1;
 
@@ -29,6 +32,19 @@
                 username VARCHAR(50) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
                 filename VARCHAR(255) NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+
+            // create the settings table
+            $pdo->exec("CREATE TABLE IF NOT EXISTS settings (
+                id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                font VARCHAR(50) NOT NULL,
+                background_color VARCHAR(50) NOT NULL,
+                header_footer_color VARCHAR(50) NOT NULL,
+                user_id INT(11) UNSIGNED NOT NULL,
+                CONSTRAINT `fk_user`
+                    FOREIGN KEY (user_id)
+                    REFERENCES user(id)
+                    ON DELETE CASCADE
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
             // create the cms_page_markdown table
