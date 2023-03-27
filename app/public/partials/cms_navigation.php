@@ -1,10 +1,25 @@
 <nav>
     <div>
-    <a href="index.php" class="backToDashboard">Back to Dashboard</a>
+        <a href="index.php" class="backToDashboard">Back to Dashboard</a>
     </div>
     <div>
-        <a href="">NAV</a>
-        <a href="">NAV</a>
-        <a href="">NAV</a>
+        <?php 
+        $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown";
+        $resultMarkdown = $pdo->query($sqlqueryMarkdown);
+
+        $sqlqueryEditor = "SELECT * FROM cms_page_editor";
+        $resultEditor = $pdo->query($sqlqueryEditor);
+
+        // render the data
+        while($row = $resultMarkdown->fetch()) {
+            $id = $row['id'];
+            echo "<a href='view.php?id=$id&mode=markdown'>". $row['title'] ."</a>";
+        }
+
+        while($row = $resultEditor->fetch()) {
+            $id = $row['id'];
+            echo "<a href='view.php?id=$id&mode=editor'>". $row['title'] ."</a>";
+        }
+        ?>
     </div>
 </nav>

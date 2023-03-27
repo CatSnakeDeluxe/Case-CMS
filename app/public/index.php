@@ -23,9 +23,7 @@
             $id = $_SESSION['user_id'];
             $sqlqueryUser = "SELECT * FROM user WHERE id=$id";
             $resultUser = $pdo->query($sqlqueryUser);
-            // echo "<p>" . $resultUser->fetch()['filename'] . "</p>" ; div
-            
-            echo '<div class="dashboardImg"><img src="./uploads/' . $resultUser->fetch()['filename'] . '"></div>';
+            echo '<div class="dashboardImg"><img src="./cms-content/uploads/' . $resultUser->fetch()['filename'] . '"></div>';
         ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <p class="createPageBtn"><a href="createMarkdown.php" >Create Page | Markdown<i class="fa-solid fa-plus"></i></a></p>
@@ -70,7 +68,7 @@
 
             echo
             "<div " . $dynamicContent . ">
-                <a href='view.php?id=$id'>
+                <a href='view.php?id=$id&mode=markdown'>
                     <p>" . $row['title'] . "</p>
                 </a>
                 <div>
@@ -87,7 +85,7 @@
 
             echo
             "<div " . $dynamicContent . ">
-                <a href='view.php?id=$id'>
+                <a href='view.php?id=$id&mode=editor'>
                     <p>" . $row['title'] . "</p>
                 </a>
                 <div>

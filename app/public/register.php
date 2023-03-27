@@ -7,30 +7,41 @@
 
     $form_username = $_POST['username'];
     $form_password = $_POST['password'];
+    $upload_success = false;
 
-    $file_name = $_FILES['image']['name'];
-    $tmp_name = $_FILES['image']['tmp_name'];
-    $folder = "./uploads/" . $file_name;
-    move_uploaded_file($tmp_name, $folder);
+    if (!empty($_FILES)) {
+    
+        $name = $_FILES['image']['name'];
+        $type = $_FILES['image']['type'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+        $error = $_FILES['image']['error'];
+        $size = $_FILES['image']['size'];
+
+        if ($error) {
+            exit("Error uploading file, error code: $error");
+        }
+
+        $allowed_file_extensions = ["jpg", "jpeg", "png"];
+        $type_parts = explode("/", $type);
+        $extension = $type_parts[1];
+
+        if (!in_array($extension, $allowed_file_extensions)) {
+            exit("Not valid file extension: $extension");
+        }
+
+        $target_directory = $_SERVER['DOCUMENT_ROOT'] . "/cms-content/uploads/";
+
+        if (move_uploaded_file($tmp_name, $target_directory . $name)) {
+            $upload_success = true;
+        }
+    
+    }
 
     if(!$form_username || !$form_password) {
         $_SESSION['message'] = "All fields required";
         header('location: register.php');
         exit();
     }
-
-    if(!$file_name) {
-        $_SESSION['message'] = "Profile image required";
-        header('location: register.php');
-        exit();
-    } 
-    
-    // else {
-    //     $file_name = $_FILES['image']['name'];
-    //     $tmp_name = $_FILES['image']['tmp_name'];
-    //     $folder = "./uploads/" . $filename;
-    //     move_uploaded_file($tmp_name, $folder);
-    // }
 
     $result = $pdo->query("SELECT * FROM user WHERE username = '$form_username'");
     $user = $result->fetch();
@@ -41,7 +52,7 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$file_name')");
+            $pdo->query("INSERT INTO user (username, password, filename) VALUES ('$form_username', '$hashed_password', '$name')");
             $_SESSION['message'] = "Successfully created user! Please login.";
             header('location: login.php');
             exit();

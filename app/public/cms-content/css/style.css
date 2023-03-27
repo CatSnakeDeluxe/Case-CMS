@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&family=Roboto:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
     margin: 0;
@@ -191,6 +191,7 @@ body {
 
 .dashboardImg {
     width: 160px;
+    height: 160px;
     align-self: center;
     margin-bottom: 0.8rem;
 }
@@ -199,7 +200,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 200px;
+    border-radius: 500px;
 }
 
 .adminPanel {
@@ -446,4 +447,50 @@ body {
     border-radius: 0.4rem;
     cursor: pointer;
     font-weight: 600;
+}
+
+/* SETTINGS */
+#poppinsOption {
+    font-family: 'Poppins', sans-serif;
+}
+
+#robotoOption {
+    font-family: 'Roboto', sans-serif;
+}
+
+#merriweatherOption {
+    font-family: 'Merriweather', serif;
+}
+
+.settingsContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.settingsOption {
+    border: 1px solid var(--darkBlue);
+    border-radius: 0.4rem;
+    width: 550px;
+    padding: 1rem;
+}
+
+.settingsOption h3 {
+    color: var(--darkBlue);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+.navigationItemContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navigationItemContainer p {
+    margin: 0.5rem;
 }

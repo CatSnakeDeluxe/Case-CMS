@@ -4,15 +4,17 @@
     include_once "parsedown.php";
 
     $id = $_GET['id'];
-    $sqlqueryEditor = "SELECT * FROM cms_page_editor WHERE id=$id";
-    $resultEditor = $pdo->query($sqlqueryEditor);
-    $cms_page_editor = $resultEditor->fetch();
+    $mode = $_GET['mode'];
 
-    $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown WHERE id=$id";
-    $resultMarkdown = $pdo->query($sqlqueryMarkdown);
-    $cms_page_markdown = $resultMarkdown->fetch();
-
-
+    if($mode == 'markdown') {
+        $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown WHERE id=$id";
+        $resultMarkdown = $pdo->query($sqlqueryMarkdown);
+        $cms_page_markdown = $resultMarkdown->fetch();
+    } else {
+        $sqlqueryEditor = "SELECT * FROM cms_page_editor WHERE id=$id";
+        $resultEditor = $pdo->query($sqlqueryEditor);
+        $cms_page_editor = $resultEditor->fetch();
+    }
 ?>
 <?php include_once "./partials/cms_head.php" ?>
 <?php include_once "./partials/cms_navigation.php" ?>
