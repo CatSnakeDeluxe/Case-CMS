@@ -37,7 +37,7 @@
         <div class="dashboardContent">
         <div class="whaleContainer whaleContainerLoggedIn">
             <p class="whaleMessage" id="whaleMessage">
-                Here you can see all pages you have created. Isn't that neat?
+                Here you can see all pages you and your friends have created. Isn't that neat?
                 <?php
                 // Write out message from other pages if exists
                 if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {

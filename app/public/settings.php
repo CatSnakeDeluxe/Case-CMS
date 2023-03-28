@@ -54,29 +54,37 @@
                 </div>
             </div>
             <div class="settingsContainer">
-                <div class="settingsOption">
+                <?php 
+                    $sqlquery_settings = "SELECT * FROM settings";
+                    $result_settings = $pdo->query($sqlquery_settings);
+                    $settings_for_user = $result_settings->fetch();
+                ?>
+                <form method="post" action="" id="settings">
                     <h3>Colors</h3>
-                    <p>Header and Footer<input class="settingColor" type="color" name="colorHeaderAndFooter" id="colorHeaderAndFooter"></p>
-                    <p>Text<input class="settingColor" type="color" name="colorText" id="colorText"></p>
-                    <p>Background<input class="settingColor" type="color" name="colorBackground" id="colorBackground"></p>
-                </div>
-                <div class="settingsOption">
-                    <h3>Font</h3>
-                    <p id="poppinsOption">Poppins | The quick brown fox jumps over the lazy dog</p>
-                    <p id="robotoOption">Roboto | The quick brown fox jumps over the lazy dog</p>
-                    <p id="merriweatherOption">Merriweather | The quick brown fox jumps over the lazy dog</p>
-                </div>
-                <div class="settingsOption">
-                    <h3>Navigation</h3>
-                    <div class="navigationItemContainer">
-                        <p>Page Name</p>
-                        <p>Page Name</p>
-                        <p>Page Name</p>
-                        <p>Page Name</p>
-                        <p>Page Name</p>
-                        <p>Page Name</p>
+                    <div>
+                        <p>Header and Footer Background</p>
+                        <input class="settingColor" type="color" name="colorHeaderAndFooterBackground" id="colorHeaderAndFooterBackground" value="<?= $settings_for_user['header_footer_background_color'] ?>">
                     </div>
-                </div>
+                    <div>
+                        <p>Header and Footer Text</p>
+                        <input class="settingColor" type="color" name="colorHeaderAndFooterText" id="colorHeaderAndFooterText" value="<?= $settings_for_user['header_footer_text_color'] ?>">
+                    </div>
+                    <div>
+                        <p>Page Background</p>
+                        <input class="settingColor" type="color" name="colorBackground" id="colorBackground" value="<?= $settings_for_user['background_color'] ?>">
+                    </div>
+                    <div>
+                        <p>Page Text</p>
+                        <input class="settingColor" type="color" name="colorText" id="colorText" value="<?= $settings_for_user['text_color'] ?>">
+                    </div>
+                    <h3>Font</h3>
+                    <select name="font" id="font">
+                        <option id="poppinsOption" value="Poppins">Poppins | The quick brown fox jumps over the lazy dog</option>
+                        <option id="robotoOption" value="Roboto">Roboto | The quick brown fox jumps over the lazy dog</option>
+                        <option id="merriweatherOption" value="Merriweather">Merriweather | The quick brown fox jumps over the lazy dog</option>
+                    </select>
+                    <input type="submit" value="Save Settings">
+                </form>
             </div>
     </div>
 </div>

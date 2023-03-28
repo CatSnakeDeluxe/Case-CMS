@@ -40,7 +40,9 @@
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 font VARCHAR(50) NOT NULL,
                 background_color VARCHAR(50) NOT NULL,
-                header_footer_color VARCHAR(50) NOT NULL
+                header_footer_background_color VARCHAR(50) NOT NULL,
+                header_footer_text_color VARCHAR(50) NOT NULL,
+                text_color VARCHAR(50) NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
             // create the cms_page_markdown table

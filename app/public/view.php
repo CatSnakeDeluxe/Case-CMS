@@ -13,7 +13,7 @@
     $settings_for_user = $result_settings->fetch();
 
     if(!$settings_for_user) {
-        $pdo->query("INSERT INTO settings (font, background_color, header_footer_color) VALUES ('Poppins', '#fff', '#333')");
+        $pdo->query("INSERT INTO settings (font, background_color, header_footer_background_color, header_footer_text_color, text_color) VALUES ('Poppins', '#ffffff', '#E3EDFF', '#2A3853', '#2A3853')");
     }
 
     if($mode == 'markdown') {
@@ -25,9 +25,31 @@
         $resultEditor = $pdo->query($sqlqueryEditor);
         $cms_page_editor = $resultEditor->fetch();
     }
+
+    // echo $settings_for_user['font'];
 ?>
 <?php include_once "./partials/cms_head.php" ?>
 <?php include_once "./partials/cms_navigation.php" ?>
+<style>
+body {
+    color: <?= $settings_for_user['text_color']; ?>;
+    font-family: <?= $settings_for_user['font']; ?>;
+    background: <?= $settings_for_user['background_color']; ?>;
+}
+
+nav {
+    background: <?= $settings_for_user['header_footer_background_color']; ?>;
+}
+
+nav a {
+    color: <?= $settings_for_user['header_footer_text_color']; ?>;
+}
+
+footer {
+    color: <?= $settings_for_user['header_footer_text_color']; ?>;
+    background: <?= $settings_for_user['header_footer_background_color']; ?>;
+}
+</style>
 <div class="cmsContent">
     <?php echo "<h1>" . $cms_page_markdown['title'] . "<h1>" ?>
     <?php 

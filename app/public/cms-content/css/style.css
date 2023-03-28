@@ -530,3 +530,32 @@ body {
     object-fit: cover;
     border-radius: 500px;
 }
+
+/* SETTINGS */
+#colorHeaderAndFooterBackground, #colorHeaderAndFooterText, #colorBackground, #colorText {
+    width: 200px;
+    height: 50px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#colorHeaderAndFooterBackground::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 1px solid var(--darkBlue);
+}
+
+#colorHeaderAndFooterText::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 1px solid var(--darkBlue);
+}
+
+#colorBackground::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 1px solid var(--darkBlue);
+}
+
+#colorText::-webkit-color-swatch {
+    border-radius: 10px;
+    border: 1px solid var(--darkBlue);
+}

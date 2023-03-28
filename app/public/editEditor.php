@@ -42,7 +42,7 @@
             $id = $_SESSION['user_id'];
             $sqlqueryUser = "SELECT * FROM user WHERE id=$id";
             $resultUser = $pdo->query($sqlqueryUser);
-            echo '<div class="dashboardImg"><img src="./uploads/' . $resultUser->fetch()['filename'] . '"></div>';
+            echo '<div class="dashboardImg"><img src="./cms-content/uploads/' . $resultUser->fetch()['filename'] . '"></div>';
         ?>
         <h2><?= $_SESSION['username'] ?></h2>
         <a href="index.php" class="createPageBtn"><i class="fa-solid fa-arrow-left"></i>Take me back</a>
