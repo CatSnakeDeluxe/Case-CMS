@@ -36,7 +36,9 @@
 
         $target_directory = $_SERVER['DOCUMENT_ROOT'] . "/cms-content/uploads/";
 
-        if (move_uploaded_file($tmp_name, $target_directory . $name)) {
+        $unique_name = time() . $name ;
+
+        if (move_uploaded_file($tmp_name, $target_directory . $unique_name)) {
             $upload_success = true;
         }
     
@@ -57,17 +59,7 @@
             exit();
         } else {
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
-            $pdo->query("INSERT INTO user (email, username, password, filename) VALUES ('$form_email', '$form_username', '$hashed_password', '$name')");
-            
-            // $id = $_SESSION['user_id'];
-
-            // $sqlquery_settings = "SELECT * FROM settings WHERE id=$id";
-            // $result_settings = $pdo->query($sqlquery_settings);
-            // $settings_for_user = $result_settings->fetch();
-
-            // if(!$settings_for_user) {
-            //     $pdo->query("INSERT INTO settings (font, background_color, header_footer_color, user_id) VALUES ('Poppins', '#fff', '#333', $id)");
-            // }
+            $pdo->query("INSERT INTO user (email, username, password, filename) VALUES ('$form_email', '$form_username', '$hashed_password', '$unique_name')");
             
             $_SESSION['message'] = "Successfully created user! Please login.";
             header('location: login.php');
