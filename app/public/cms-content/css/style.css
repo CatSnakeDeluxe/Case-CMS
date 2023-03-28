@@ -498,14 +498,13 @@ body {
 /* USER */
 .dynamicUsers {
     display: flex;
-    padding: 0.8rem;
     flex-wrap: wrap;
     width: 100%;
     margin: auto;
 }
 
 .dynamicUser {
-    border-radius: 0.3rem;
+    margin: 2rem;
     display: flex;
 }
 

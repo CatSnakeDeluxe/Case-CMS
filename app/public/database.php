@@ -40,12 +40,7 @@
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 font VARCHAR(50) NOT NULL,
                 background_color VARCHAR(50) NOT NULL,
-                header_footer_color VARCHAR(50) NOT NULL,
-                user_id INT(11) UNSIGNED NOT NULL,
-                CONSTRAINT `fk_user`
-                    FOREIGN KEY (user_id)
-                    REFERENCES user(id)
-                    ON DELETE CASCADE
+                header_footer_color VARCHAR(50) NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
     
             // create the cms_page_markdown table

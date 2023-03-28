@@ -59,15 +59,13 @@
             $hashed_password = password_hash($form_password, PASSWORD_DEFAULT);
             $pdo->query("INSERT INTO user (email, username, password, filename) VALUES ('$form_email', '$form_username', '$hashed_password', '$name')");
             
-            $id = $_SESSION['user_id'];
-            // $sqlquerySettings = "SELECT * FROM settings WHERE id=$id";
-            // $resultSettings = $pdo->query($sqlquerySettings);
-            // $row = $resultSettings->fetch();
+            // $id = $_SESSION['user_id'];
 
-            // $check_if_settings_exist = $pdo->query("SHOW TABLES LIKE 'settings'");
-            // $settings = $check_if_settings_exist->rowCount() == 1;
+            // $sqlquery_settings = "SELECT * FROM settings WHERE id=$id";
+            // $result_settings = $pdo->query($sqlquery_settings);
+            // $settings_for_user = $result_settings->fetch();
 
-            // if($check_if_settings_exist->rowCount() == 1) {
+            // if(!$settings_for_user) {
             //     $pdo->query("INSERT INTO settings (font, background_color, header_footer_color, user_id) VALUES ('Poppins', '#fff', '#333', $id)");
             // }
             

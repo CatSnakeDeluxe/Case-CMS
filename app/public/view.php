@@ -6,6 +6,16 @@
     $id = $_GET['id'];
     $mode = $_GET['mode'];
 
+    // $user_id = $_SESSION['user_id'];
+    // $sqlquery_settings = "SELECT * FROM settings WHERE id=$id";
+    $sqlquery_settings = "SELECT * FROM settings";
+    $result_settings = $pdo->query($sqlquery_settings);
+    $settings_for_user = $result_settings->fetch();
+
+    if(!$settings_for_user) {
+        $pdo->query("INSERT INTO settings (font, background_color, header_footer_color) VALUES ('Poppins', '#fff', '#333')");
+    }
+
     if($mode == 'markdown') {
         $sqlqueryMarkdown = "SELECT * FROM cms_page_markdown WHERE id=$id";
         $resultMarkdown = $pdo->query($sqlqueryMarkdown);
