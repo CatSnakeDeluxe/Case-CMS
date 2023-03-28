@@ -559,3 +559,30 @@ body {
     border-radius: 10px;
     border: 1px solid var(--darkBlue);
 }
+
+#settings {
+    display: flex;
+    flex-direction: column;
+}
+
+#settings select {
+    padding: 0.6rem;
+    outline: none;
+}
+
+#settings p {
+    color: var(--darkBlue);
+    text-align: center;
+}
+
+#settings .option {
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+#settings h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--darkBlue);
+}

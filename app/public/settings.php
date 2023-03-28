@@ -76,30 +76,30 @@
             ?>
             <form method="post" action="" id="settings">
                 <h3>Colors</h3>
-                <div>
+                <div class="option">
                     <p>Header and Footer Background</p>
                     <input type="color" name="colorHeaderAndFooterBackground" id="colorHeaderAndFooterBackground" value="<?= $settings_for_user['header_footer_background_color'] ?>">
                 </div>
-                <div>
+                <div class="option">
                     <p>Header and Footer Text</p>
                     <input type="color" name="colorHeaderAndFooterText" id="colorHeaderAndFooterText" value="<?= $settings_for_user['header_footer_text_color'] ?>">
                 </div>
-                <div>
+                <div class="option">
                     <p>Page Background</p>
                     <input type="color" name="colorBackground" id="colorBackground" value="<?= $settings_for_user['background_color'] ?>">
                 </div>
-                <div>
+                <div class="option">
                     <p>Page Text</p>
                     <input type="color" name="colorText" id="colorText" value="<?= $settings_for_user['text_color'] ?>">
                 </div>
                 <h3>Font</h3>
-                <select name="font" id="font">
+                <select class="option" name="font" id="font">
                     <option value="" selected disabled hidden>Current font: <?php echo $settings_for_user['font'] ?></option>
                     <option id="poppinsOption" value="Poppins">Poppins | The quick brown fox jumps over the lazy dog</option>
                     <option id="robotoOption" value="Roboto">Roboto | The quick brown fox jumps over the lazy dog</option>
                     <option id="merriweatherOption" value="Merriweather">Merriweather | The quick brown fox jumps over the lazy dog</option>
                 </select>
-                <input type="submit" value="Save Settings">
+                <input class="btnOutline" type="submit" value="Save Settings">
             </form>
         </div>
     </div>
