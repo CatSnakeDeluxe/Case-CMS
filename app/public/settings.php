@@ -7,6 +7,21 @@
         header('location: login.php');
         exit();
     }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //handle form submission
+        $form_font = trim($_POST["font"]);
+        $form_background_color = trim($_POST["colorBackground"]);
+        $form_header_footer_background_color = trim($_POST["colorHeaderAndFooterBackground"]);
+        $form_header_footer_text_color = trim($_POST["colorHeaderAndFooterText"]);
+        $form_text_color = trim($_POST["colorText"]);
+        
+        $sqlquery = "UPDATE settings SET font='$form_font', background_color='$form_background_color', header_footer_background_color='$form_header_footer_background_color', header_footer_text_color='$form_header_footer_text_color', text_color='$form_text_color'";
+        $sqlStatement = $pdo->query($sqlquery);
+
+        $_SESSION['message'] = "Successfully saved settings";
+        
+        header("location: index.php");
+    }
 ?>
 <?php include_once "./partials/head.php" ?>
 <div class="dashboardContainer">
