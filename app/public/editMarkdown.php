@@ -6,31 +6,17 @@
     if (!isset($_SESSION['user_id'])) {
         header('location: login.php');
         exit();
-    }   
+    }
 
-    // Handle form submission
+    // handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        print_r($_POST);
         $form_title = trim($_POST["pagetitle"]);
         $form_markdown = trim($_POST["markdown"]);
         $form_id = trim($_POST["id"]);
 
-        if(!$form_title) {
-            $id = $_GET['id'];
-            $_SESSION['message'] = "Title needed";
-            header("location: editMarkdown.php?id=$id");
-            exit();
-        }
-
-        if(!$form_markdown) {
-            $id = $_GET['id'];
-            $_SESSION['message'] = "Content needed";
-            header("location: editMarkdown.php?id=$id");
-            exit();
-        }
-
-        // Check if there is any text from user
-        if (!empty($form_title) && !empty($form_markdown)) {
-            // Prepare sql query to insert new journal entry
+        if (!empty($form_title) && !empty($form_markdown) ) {
+            
             $sqlquery = "UPDATE cms_page_markdown SET title='$form_title', markdown='$form_markdown' WHERE id=$form_id";
             $sqlStatement = $pdo->query($sqlquery);
 
@@ -48,6 +34,7 @@
 
         $old_title = $row['title'];
         $old_markdown = $row['markdown'];
+        $old_id = $row['id'];
     }
     ob_end_flush();
 ?>
@@ -75,7 +62,7 @@
         </div>
         <div class="editFormContainer">
             <form class="markdownForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
+                <input type="number" name="id" id="id" value="<?= $old_id ?>" hidden>
                 <input type="text" name="pagetitle" id="pagetitle" value="<?= $old_title ?>">
                 <textarea name="markdown" id="markdown" rows="18"><?php echo $old_markdown ?></textarea>
                 <input class="btnOutline" type="submit" value="Save Changes">
@@ -85,7 +72,6 @@
             <p class="whaleMessage" id="whaleMessage">
                 I'm here to tell you if anything goes wrong. You can do this!
                 <?php
-                // Write out message from other pages if exists
                 if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
                     echo '<span id="dynamicMessage">' . $_SESSION['message'] . '</span>';
                     unset( $_SESSION['message']);

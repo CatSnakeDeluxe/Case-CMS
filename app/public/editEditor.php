@@ -31,6 +31,7 @@
 
         $old_title = $row['title'];
         $old_content = $row['content'];
+        $old_id = $row['id'];
     }
     ob_end_flush();
 ?>
@@ -58,7 +59,7 @@
         </div>
         <div class="editFormContainer">
             <form class="tinyEditorForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
+                <input type="number" name="id" id="id" value="<?= $old_id ?>" hidden>
                 <input type="text" name="pagetitle" id="pagetitle" placeholder="Page Title" value="<?= $old_title ?>">
                 <textarea id="tinyEditor" name="tinyEditor" placeholder="Start creating content here"><?php echo $old_content ?></textarea>
                 <input class="btnOutline" type="submit" value="Save Page">
