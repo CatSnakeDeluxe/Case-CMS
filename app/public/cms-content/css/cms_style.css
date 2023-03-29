@@ -11,9 +11,25 @@
     --lightGrey: #dadada;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
 h1 {
     font-weight: 400;
     text-align: center;
+    margin: 1rem;
+}
+
+h2, h3, h4, h5, h6 {
+    margin: 0.6rem;
+}
+
+p {
+    margin: 1rem;
 }
 
 nav {
@@ -31,6 +47,7 @@ nav a {
 .backToDashboard {
     position: absolute;
     left: 8px;
+    font-size: 0.8rem;
 }
 
 .cmsContent {
@@ -40,10 +57,14 @@ nav a {
 
 footer {
     padding: 0.5rem;
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100%; */
     text-align: center;
+}
+
+footer p {
+    margin: 0;
 }
 
 footer .imgContainer {

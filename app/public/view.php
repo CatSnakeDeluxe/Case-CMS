@@ -29,7 +29,7 @@
     // echo $settings_for_user['font'];
 ?>
 <?php include_once "./partials/cms_head.php" ?>
-<?php include_once "./partials/cms_navigation.php" ?>
+
 <style>
 body {
     color: <?= $settings_for_user['text_color']; ?>;
@@ -50,20 +50,23 @@ footer {
     background: <?= $settings_for_user['header_footer_background_color']; ?>;
 }
 </style>
-<div class="cmsContent">
-    <?php echo "<h1>" . $cms_page_markdown['title'] . "<h1>" ?>
-    <?php 
-        $Parsedown = new Parsedown();
-        $html = $Parsedown->text($cms_page_markdown['markdown']);
+<div class="flexContainer">
+    <?php include_once "./partials/cms_navigation.php" ?>
+    <div class="cmsContent">
+        <?php echo "<h1>" . $cms_page_markdown['title'] . "<h1>" ?>
+        <?php 
+            $Parsedown = new Parsedown();
+            $html = $Parsedown->text($cms_page_markdown['markdown']);
 
-        echo $html;
-    ?>
-    <?php echo "<h1>" . $cms_page_editor['title'] . "<h1>" ?>
-    <?php
-        $Parsedown = new Parsedown();
-        $html = $Parsedown->text($cms_page_editor['content']);
+            echo $html;
+        ?>
+        <?php echo "<h1>" . $cms_page_editor['title'] . "<h1>" ?>
+        <?php
+            $Parsedown = new Parsedown();
+            $html = $Parsedown->text($cms_page_editor['content']);
 
-        echo $html;
-    ?>
+            echo $html;
+        ?>
+    </div>
 </div>
 <?php include_once "./partials/cms_footer.php" ?>

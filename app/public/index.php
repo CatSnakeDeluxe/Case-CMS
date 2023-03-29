@@ -74,7 +74,7 @@
                 </a>
                 <div>
                     <a href='editMarkdown.php?id=$id'>" . $edit . "</a>
-                    <a href='delete.php?id=$id'>" . $delete . "</a>
+                    <a href='delete.php?id=$id&mode=markdown'>" . $delete . "</a>
                 </div>
             </div>";
         }
@@ -91,7 +91,7 @@
                 </a>
                 <div>
                     <a href='editEditor.php?id=$id'>" . $edit . "</a>
-                    <a href='delete.php?id=$id'>" . $delete . "</a>
+                    <a href='delete.php?id=$id&mode=editor'>" . $delete . "</a>
                 </div>
             </div>";
         }

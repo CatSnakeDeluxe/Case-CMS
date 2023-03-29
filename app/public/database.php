@@ -49,7 +49,7 @@
             $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_markdown (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
-                markdown VARCHAR(10000) NOT NULL,
+                markdown TEXT NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
                 CONSTRAINT `fk_user_2`
@@ -62,7 +62,7 @@
             $pdo->exec("CREATE TABLE IF NOT EXISTS cms_page_editor (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
-                content VARCHAR(10000) NOT NULL,
+                content TEXT NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 user_id INT(11) UNSIGNED NOT NULL,
                 CONSTRAINT `fk_user_3`

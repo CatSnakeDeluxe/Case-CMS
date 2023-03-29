@@ -7,12 +7,20 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Retreive which id to delete from url
 $idToRemove = $_GET['id'];
+$mode = $_GET['mode'];
 
-if (isset($idToRemove)) {
+if($mode == 'markdown' && isset($idToRemove)) {
     // Create sql query
     $sqlquery = "DELETE FROM cms_page_markdown where id=$idToRemove";
+    $pdo->query($sqlquery);
+
+    // Redirect
+    $_SESSION['message'] = "Successfully deleted page";
+    header("location: index.php");
+} else {
+    // Create sql query
+    $sqlquery = "DELETE FROM cms_page_editor where id=$idToRemove";
     $pdo->query($sqlquery);
 
     // Redirect
