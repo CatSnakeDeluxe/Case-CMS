@@ -1,8 +1,15 @@
 <?php
-    define('DB_SERVER', 'mysql');
-    define('DB_USERNAME', 'db_user');
-    define('DB_PASSWORD', 'db_password');
-    define('DB_NAME', 'db_lamp_app');
+    // LINODE
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'cms_user_linode');
+    define('DB_PASSWORD', 'ZY3eDmRchz');
+    define('DB_NAME', 'cms');
+
+    // LOCAL
+    // define('DB_SERVER', 'mysql');
+    // define('DB_USERNAME', 'db_user');
+    // define('DB_PASSWORD', 'db_password');
+    // define('DB_NAME', 'db_lamp_app');
 
     try {
         // connect to db
