@@ -49,7 +49,15 @@ footer {
     color: <?= $settings_for_user['header_footer_text_color']; ?>;
     background: <?= $settings_for_user['header_footer_background_color']; ?>;
 }
-</style>
+
+<?php  
+    if (!isset($_SESSION['user_id'])) {
+        echo ".backToDashboard {
+            display: none;
+        }";
+    };
+?>
+</style> 
 <div class="flexContainer">
     <?php include_once "./partials/cms_navigation.php" ?>
     <div class="cmsContent">

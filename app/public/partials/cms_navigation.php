@@ -10,7 +10,6 @@
         $sqlqueryEditor = "SELECT * FROM cms_page_editor";
         $resultEditor = $pdo->query($sqlqueryEditor);
 
-        // render the data
         while($row = $resultMarkdown->fetch()) {
             $id = $row['id'];
             echo "<a href='view.php?id=$id&mode=markdown'>". $row['title'] ."</a>";

@@ -44,7 +44,6 @@
         if (move_uploaded_file($tmp_name, $target_directory . $unique_name)) {
             $upload_success = true;
         }
-    
     }
 
     if(!$form_username || !$form_password || !$form_email) {
